@@ -1,0 +1,70 @@
+.about-ci-tbl .cell1 {
+  width: 285px;
+  border-top: 1px solid #e2e2e2;
+  border-bottom: 1px solid #e2e2e2
+}
+.img-logo-ci {
+  margin: 3rem;
+}
+.about-ci-color {
+  margin-top: 3rem;
+  padding-left: 70px;
+  position: relative;
+  color: #5a5a5a;
+  & > dt {
+    font-weight: bold;
+  }
+  &::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    border-radius: 3px;
+    width: 50px;
+    height: 50px;
+    top: 5px;
+    left: 0;
+    background-color: rgb(2,40,60);
+  }
+}
+
+@include mq-desktop {
+  .about-pic {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    background-color: #287351;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .about-desc {
+    margin-top: 2rem;
+    dt {
+      float: left;
+      width: 30%;
+    }
+    dd {
+      float: left;
+      width: 70%;
+    }
+  }
+  .about-ci-tbl .cell2 {
+    padding: 15px 30px;
+  }
+  .pg-desc.txt-left {
+    text-align: left;
+  }
+}
+
+@include mq-tab {
+  .about-ci-tbl .cell1 {
+    width: 300px;
+    margin: 20px auto 40px;
+  }
+  .about-ci-color {
+    padding-left: 50%;
+     &::before {
+       left: auto;
+       right: 55%;
+     }
+  }
+}

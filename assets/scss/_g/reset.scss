@@ -1,0 +1,38 @@
+$placeholder_color: #8e8e8e;
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: $placeholder_color;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: $placeholder_color;
+  opacity: 1;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: $placeholder_color;
+  opacity: 1;
+}
+
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: $placeholder_color;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d0cfd4;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-clip: content-box;
+}

@@ -1,0 +1,196 @@
+html:lang(ko) {
+  word-break: keep-all;
+}
+
+.app-pad {
+  max-width: 1140px;
+  padding: 0 #{$app_padding};
+  margin: 0 auto;
+  position: relative;
+}
+
+.app-header {
+  position: fixed;
+  height: $app_header_height;
+  z-index: 100;
+  width: 100%;
+
+  &::after {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    display: block;
+    width: 1px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+  }
+}
+.app-logo {
+  margin:5px 0 0 10px;
+  float: left;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity .3s ease-in-out, transform .3s ease-in-out;
+  img {
+    height: 60px;
+  }
+}
+
+.app-page {
+  min-height: inherit;
+}
+
+.client.is-fixed {
+  .app-logo {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  .app-header {
+    background-color: rgba(255, 255, 255, 0.9);
+
+    &::after {
+      width: 100%;
+      transition: width 0.5s linear;
+      border-color: rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+.pg-align {
+  position: relative;
+  &::after {
+    content: ' ';
+    position: absolute;
+    border-bottom: 1px solid #e8e8e8;
+    bottom: 0;
+    left: -20px;
+    right: -20px;
+  }
+}
+
+@include mq-desktop {
+
+  .pg-align {
+    padding: 15vh 3rem 15vh;
+    vertical-align: middle;
+  }
+  .pg-title {
+    font-size: 3rem;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .pg-summary {
+    display: block;
+    font-size: 1.250rem;
+    text-align: center;
+    width: 80%;
+    margin: 2rem auto 0;
+  }
+
+  .pg-desc {
+    color: #696d6f;
+    font-size: 0.938rem;
+    margin-top: 2rem;
+    line-height: 1.8;
+    text-align: center;
+  }
+
+  .pg-title + .pg-desc {
+    margin-top: 3.25rem;
+  }
+
+  .pg-desc-left {
+    color: #696d6f;
+    font-size: 0.938rem;
+    margin-top: 2rem;
+    line-height: 1.8;
+    text-align: left;
+  }
+
+  .pg-inner-body {
+    margin-top: 8.75rem;
+  }
+
+  .pg-inner-title {
+    color: #282e31;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  .btn-box {
+    margin-bottom: -30px;
+  }
+
+}
+
+@include mq-tab {
+  html {
+    font-size: 15px;
+  }
+  .app-header {
+    height: 70px
+  }
+  .app-logo img {
+    height: 40px;
+  }
+  .m-br {
+    display: block
+  }
+  .pg-align {
+    padding: 100px 0 90px;
+    &::after {
+      left: 0px;
+      right: 0px;
+    }
+  }
+  .app-pad {
+    padding: 0 #{$app_mobile_padding};
+  }
+  .app-page {
+    display: table;
+    width: 100%;
+
+    .pg-align {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+
+  .pg-title {
+    font-size: mb-rem(50);
+    text-align: center;
+    line-height: 1;
+  }
+
+  .pg-summary {
+    display: block;
+    font-size:  mb-rem(28);
+    text-align: center;
+    margin: 20px auto 0;
+  }
+
+  .pg-desc {
+    color: #696d6f;
+    font-size: mb-rem(26);
+    margin-top: 20px;
+    line-height: 1.8;
+    text-align: center;
+  }
+
+  .pg-inner-body {
+    margin-top: 34px;
+  }
+
+  .pg-inner-title {
+    color: #282e31;
+    font-size: mb-rem(30);
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  .btn-box {
+    margin-bottom: -30px;
+  }
+
+}

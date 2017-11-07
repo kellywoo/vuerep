@@ -1,0 +1,68 @@
+$interval: 10px;
+$mobile_interval: 7px;
+
+@mixin form_default() {
+  color: #555;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 0.5em 1.25em;
+  font-size: 0.875rem;
+  line-height: 1.5em;
+}
+
+@mixin form_mobile_default() {
+  color: #555;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 0.5em 0.8em;
+  font-size: mb-rem(26);
+  line-height: 1.75em;
+}
+
+@mixin getSpace($space) {
+  margin: #{$space*2} #{ -1 * $space/2};
+  padding-left: #{ $space/2};
+  padding-right: #{ $space/2}
+}
+
+@include mq-desktop {
+
+  .form-box {
+    @include getSpace($interval);
+  }
+
+  .input {
+    width: 100%;
+    @include form_default;
+  }
+  .select {
+    width: 100%;
+    @include form_default;
+  }
+  .textarea {
+    resize: none;
+    width: 100%;
+    min-height: 4.5rem;
+    @include form_default;
+  }
+}
+
+@include mq-tab {
+  .form-box {
+    @include getSpace($mobile_interval);
+  }
+  .input {
+    width: 100%;
+    @include form_mobile_default;
+  }
+  .select {
+    width: 100%;
+    @include form_mobile_default;
+  }
+  .textarea {
+    resize: none;
+    width: 100%;
+    min-height: 100px;
+    @include form_mobile_default;
+  }
+}

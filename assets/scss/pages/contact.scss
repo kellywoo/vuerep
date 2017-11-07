@@ -1,0 +1,79 @@
+.pg-contact {
+  background-color: #1b1e21;
+}
+
+.contact-form {
+  max-width: 830px;
+  margin: 70px auto 90px;
+  padding: 0 #{$app_padding};
+}
+.contact-advise {
+  color: #818283;
+  margin-top: 2rem;
+}
+.btn-submit {
+  width: 100%;
+  background-color: #6772e5;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 0.875rem;
+  height: 47px;
+}
+
+.footer {
+  color: #7c7d7e;
+  font-size: 0.875rem;
+  text-align: center;
+  padding-bottom: 3rem;
+}
+
+
+@include mq-desktop {
+  .contact-info {
+    color: #fff;
+    & > dt {
+      float: left;
+      width: 50%;
+       & > span {
+         margin-top: 0.5rem;
+       }
+    }
+    & > dd {
+      width:50%;
+      float: right;
+      margin-bottom: 0.3rem;
+    }
+  }
+}
+
+@include mq-tab {
+
+  .pg-contact {
+    display: block !important;
+  }
+
+  .contact-form {
+    padding: 0 #{$app_mobile_padding};
+    margin: 40px auto 30px;
+    max-width: 600px;
+  }
+
+  .contact-info {
+    color: rgba(255,255,255,0.7);
+    font-size: mb-rem(22);
+    & > dt > span {
+      margin:0.5rem 0 1rem;
+    }
+    & > dd + dd {
+      margin-top: 0.3rem;
+    }
+  }
+
+  .btn-submit {
+    font-size: mb-rem(26);
+  }
+
+  .footer {
+    padding-bottom: 2rem;
+  }
+}

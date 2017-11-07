@@ -1,0 +1,253 @@
+$gnb_menu_color: #cecece;
+$gnb_menu_active_color: #48b5f9;
+$gnb_menu_height: 50px;
+$gnb_width: 200px;
+
+/*gnb*/
+@include mq-desktop {
+
+  $menu_color: #cecece;
+  $menu_active_color: #48b5f9;
+  $menu_height: 50px;
+  $menu_collapse_height: 9px;
+
+  .gnb {
+    position: fixed;
+    right: 0;
+    top: 0;
+    display: table;
+    height: 100%;
+    padding: 4rem 0rem 3rem 2rem;
+    z-index: 100;
+    background: url('/assets/img/bgs/bg_transparent.png') 0 0 repeat;
+
+    .gnb-lang {
+      position: absolute;
+      font-size: 13px;
+      top: 29px;
+      right: 20px;
+      color: #555;
+    }
+    .gnb-quick {
+      position: absolute;
+    }
+    .gnb-nav {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    /*scroll-menu*/
+    .scroll-menu > li {
+      font-size: 0.75rem;
+      & + li {
+        margin-top: 15px;
+      }
+    }
+
+    .scroll-menu-item {
+      text-align: left;
+      display: block;
+      margin-right: 0;
+      color: #fff;
+      padding: 3px 0px 3px 15px;
+      border-bottom-left-radius: 5px;
+      border-top-left-radius: 5px;
+      font-weight: bold;
+      /*transform: rotate(20deg) translateX(1rem);*/
+
+      &.n-1 {
+        color: $pg_color_1;
+      }
+      &.n-2 {
+        color: $pg_color_2;
+      }
+      &.n-3 {
+        color: $pg_color_3;
+      }
+      &.n-4 {
+        color: $pg_color_4;
+      }
+      &.n-5 {
+        color: $pg_color_5;
+      }
+      &.n-6 {
+        color: $pg_color_6;
+      }
+
+      &::after {
+        content: ' ';
+        display:inline-block;
+        font-family:'FontAwesome';
+        color: inherit;
+        margin-left: 5px;
+        width: 1rem;
+        font-weight: 400;
+      }
+
+      &:hover,
+      &.is-active {
+        box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.3);
+
+        &.n-1 {
+          color: #fff;
+          background-color: $pg_color_1;
+          box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.2);
+        }
+        &.n-2 {
+          background-color: $pg_color_2;
+          color: #fff;
+        }
+        &.n-3 {
+          background-color: $pg_color_3;
+          color: #fff;
+        }
+        &.n-4 {
+          background-color: $pg_color_4;
+          color: #fff;
+          box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.2);
+        }
+        &.n-5 {
+          background-color: $pg_color_5;
+          color: #fff;
+        }
+        &.n-6 {
+          background-color: $pg_color_6;
+          color: #fff;
+        }
+
+      }
+      &.is-active {
+        animation-name: fadeInRight;
+        animation-duration: .5s;
+      }
+      &.is-active::after {
+        content: '\f00c';
+      }
+    }
+
+  }
+  .fadeInLeftBig {
+    animation-name: fadeInLeftBig;
+  }
+
+  @keyframes fadeInRight {
+    0% {
+      opacity: 0.3;
+      transform: translate3d(100%, 0, 0);
+    }
+
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@include mq-tab {
+  $btn_icon_size: 32px;
+  .is-fixed {
+    .btn-gnb-open {
+      background-position-x: -1*$btn_icon_size;
+    }
+  }
+  $gnb_mb_width: 350px;
+  .gnb {
+    width: $gnb_mb_width;
+    top: 0;
+    padding: 69px 0;
+    bottom: 0;
+    position: fixed;
+    right: -1*$gnb_mb_width;
+    background-color: rgba(18, 18, 18, 0.8);
+    z-index: 100;
+    overflow-y: hidden;
+    transition: right .4s;
+    &.is-open {
+      right: 0;
+    }
+  }
+
+  %btn-tgg {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    @include square($btn_icon_size);
+    padding: 2px;
+    display: block;
+    font-size: 30px;
+    background-image: url('/assets/img/bgs/icon_gnb_btn.png');
+    background-size: auto #{$btn_icon_size};
+    background-position-y: top;
+    background-repeat: no-repeat;
+  }
+  .btn-gnb-open {
+    @extend %btn-tgg;
+    color: rgba(255, 255, 255, 0.5);
+    background-position-x: 0
+  }
+  .btn-gnb-close {
+    @extend %btn-tgg;
+    color: #fff;
+    background-position-x: -2 * $btn_icon_size;
+  }
+
+  .gnb-nav {
+    position: relative;
+    padding: 10px 0;
+    font-size: 1.25rem;
+    box-shadow: 0 0 6px 0 rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.5);
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+  }
+
+  .gnb-menu > li:nth-child(1) {
+    display: none;
+  }
+
+  .gnb-nav .scroll-menu-item {
+    display: block;
+    padding: 16px 32px;
+  }
+
+  .gnb-lang {
+    margin: 10px;
+    position: absolute;
+    color: #898989;
+    top: 10px;
+    left: 23px;
+  }
+  .gnb-quick {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    margin-top: 30px;
+    text-align: center;
+    & > a {
+      display: inline-block;
+      border-radius: 20px;
+      line-height: 25px;
+      padding: 8px 15px;
+      background-color: #40d56d;
+      white-space: nowrap;
+      opacity: 1;
+      color: #fff;
+      letter-spacing: 0;
+      &::after {
+        content: ' ';
+        position: relative;
+        display: inline-block;
+        margin-left: 10px;
+        vertical-align: middle;
+        @include square(25px);
+        background: url('/assets/img/bgs/icon_cafe.png');
+        background-position: 0 -25px;
+      }
+    }
+    &::before {
+      border: none;
+      padding-bottom: 8px;
+    }
+
+  }
+}

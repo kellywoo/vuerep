@@ -1,0 +1,37 @@
+@mixin ghostBtn($bg,$color,$width:1px) {
+  color: $color;
+  background-color: $bg;
+  border: #{$width} solid #{$color};
+  &:hover {
+    background-color: $color;
+
+    @if $bg = 'transparent' {
+      color: #fff;
+    } @else {
+      color: $bg;
+    }
+
+  }
+}
+
+.btn-jump {
+  display: inline-block;
+  line-height: 4em;
+  padding: 0 3em;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color .3s ease-in-out, color .3s ease-in-out;
+  @include ghostBtn(transparent, #3f46ae);
+}
+
+@include mq-tab {
+  .btn-jump {
+    font-size: mb-rem(28);
+    width: 240px;
+    line-height: 3em;
+    padding: 0;
+    color: #fff;
+    background-color: #3f46ae;
+  }
+}

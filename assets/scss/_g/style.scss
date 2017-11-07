@@ -1,0 +1,168 @@
+@for $i from 1 through 12 {
+  .w-#{$i} {
+    width: 100% /12 * $i
+  }
+}
+
+/*font*/
+.f-roboto {
+  font-family: Roboto, Arial, 'Malgun Gothic', sans-serif;
+}
+
+.fw-b {
+  font-weight: bold;
+}
+
+/*align*/
+html .txt-l {
+  text-align: left
+}
+
+html .txt-r {
+  text-align: right
+}
+
+html .txt-c {
+  text-align: center
+}
+
+html .v-middle {
+  vertical-align: middle;
+}
+
+html .v-top {
+  vertical-align: top;
+}
+
+html .v-base {
+  vertical-align: baseline;
+}
+
+/*width division*/
+
+/*display layout*/
+.lo-col::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.lo-col > li {
+  float: left;
+}
+
+@for $i from 1 through 10 {
+  .col-#{$i} > li {
+    width: 100% / $i;
+  }
+}
+
+.lo-tbl {
+  display: table;
+  width: 100%;
+}
+
+.lo-td {
+  display: table-cell;
+}
+
+
+/*paragraph*/
+.sty-colon::after {
+  content: ':';
+  padding: 0 0.5em;
+}
+
+.ellip-1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: normal;
+  word-break: break-all;
+}
+
+.opac-0 {
+  opacity: 0;
+}
+
+.clear-fix::after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+
+/*strong classes*/
+#app {
+  .fl {
+    float: left
+  }
+  .fr {
+    float: right
+  }
+  .no-pad {
+    padding: 0;
+  }
+  .block {
+    display: block;
+  }
+  .in-block {
+    display: inline-block;
+  }
+  .inline {
+    display: inline;
+  }
+  .off-grid {
+    display: block;
+    width: 1px;
+    height: 1px;
+    overflow: hidden !important;
+    background: none !important;
+    color: transparent;
+  }
+  .no-before::before,
+  .no-after::after {
+    content: none;
+  }
+}
+
+
+@include mq-desktop {
+  #app .m-none,
+  #app .m-br {
+    display: none
+  }
+  #app .p-br {
+    display: block;
+  }
+}
+@include mq-tab {
+  #app .m-block {
+    display: block;
+  }
+  #app .p-none,
+  #app .p-br {
+    display: none;
+  }
+}
+
+/*animations*/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.auto-section.dirty {
+  .ani-fadein {
+    animation-timing-function: $easing_cubic;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    @include animationOrder(0.4s, 4, 0.4s);
+  }
+}

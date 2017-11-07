@@ -1,0 +1,106 @@
+/*home*/
+
+.home-visual {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-width: 2000px;
+  height: 100%;
+}
+
+.pg-home-title {
+  position: relative;
+  font-size: 6rem;
+  line-height: 1.15em;
+  color: #efaf4d;
+  text-align: center;
+  letter-spacing: -5px;
+  padding: 2rem 0 2rem;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.6);
+  img {
+    width: 40vw;
+    max-width: 360px;
+  }
+}
+
+.pg-home-desc {
+  font-size: 1.125rem;
+  color: rgba(53,73,94, 0.8);
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 2;
+  strong {
+    font-weight: bold;
+    color: rgba(65,184,131,1);
+  }
+}
+
+.pg-home {
+  background-attachment: fixed;
+  background-size: cover;
+  max-width: none !important;
+}
+
+/*home*/
+@include mq-desktop {
+  .pg-home {
+    //background: #{$pg_color_1} url('/assets/img/bgs/bg_home.svg') center center no-repeat;
+    background-size: contain;
+    background-attachment: fixed;
+  }
+
+  .pg-home {
+    display: table;
+    width: 100%;
+    vertical-align: middle;
+    .pg-align {
+      display: table-cell;
+      padding-top: 8vh;
+    }
+  }
+  .pg-home-desc {
+    font-weight: bold;
+  }
+
+}
+
+@include mq-tab {
+
+  .pg-home .pg-align {
+    padding-top: 70px;
+  }
+  .auto-section:nth-child(1) {
+    min-height: 100vh !important;
+  }
+  .pg-home-title {
+    font-size: 13vw;
+    letter-spacing: -1px;
+    font-weight: 500;
+    padding: 3rem 0;
+    @include mq-mobile {
+      .pg-home-title {
+        font-size: mb-rem(90);
+      }
+    }
+
+    &::before {
+      height: 2.5rem;
+    }
+
+    &::after {
+      height: 2.5rem;
+    }
+  }
+  .pg-home-desc {
+    font-size: mb_rem(28);
+  }
+  .btn-autoscroll-down {
+    width: 60px;
+    height: 30px;
+    margin-left: -30px;
+  }
+
+}
+
+

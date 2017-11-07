@@ -1,0 +1,63 @@
+$pg_color_1 : #d5d5d5;
+$pg_color_2 : #ffc564;
+$pg_color_3 : #f87c56;
+$pg_color_4 : #46d1f0;
+$pg_color_5 : #88b745;
+$pg_color_6 : #3f46ae;
+
+@mixin li-icons($n,$width,$name) {
+  @for $i from 1 through $n {
+    &:nth-child(#{$i}) #{$name} {
+      background-position: -1 * $width * ($i - 1) top;
+    }
+  }
+}
+
+@mixin animationOrder($delay, $n, $minus : 0) {
+  @for $i from 1 through $n {
+    &.n#{$i} {
+      animation-delay: ($delay * $i) - $minus;
+    }
+  }
+}
+
+@mixin square($px) {
+  width: $px;
+  height: $px;
+}
+
+$desktop_minimum_width: 769px;
+$mobile_width: 450px;
+$app_padding: 40px;
+$app_mobile_padding: 2rem;
+$app_header_height: 75px;
+$easing_cubic: cubic-bezier(0.215, 0.610, 0.55, 1.000);
+//n은 디자인 사이즈
+@function mb-px( $n ) {
+  @return #{$n /(26/15)}px;
+}
+
+@function mb-rem ($n) {
+  @return #{ $n/26 }rem;
+}
+
+@mixin mq-tab {
+  @media (max-width: #{$desktop_minimum_width - 1px}) {
+    @content;
+  }
+}
+
+@mixin mq-desktop {
+  @media (min-width: #{$desktop_minimum_width}) {
+    @content;
+  }
+}
+
+// mq-mobile should be under mq-tab;
+@mixin mq-mobile {
+  @at-root {
+    @media (max-width: #{$mobile_width}) {
+      @content;
+    }
+  }
+}

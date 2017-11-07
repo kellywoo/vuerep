@@ -1,0 +1,20 @@
+
+@include mq-desktop {
+  .pg-work .pg-inner-body {
+    margin-top: 5rem;
+    height: 50vh;
+    min-height: 300px;
+    background: url('/assets/img/bgs/bg_work.png') center center no-repeat;
+    background-size: auto 100%;
+  }
+}
+
+@include mq-tab {
+  .pg-work .pg-inner-body {
+    margin: 4rem auto 3rem;
+    width: 70vw;
+    height: 45vw;
+    background: url('/assets/img/bgs/mb_work.png') center center no-repeat;
+    background-size: 100% auto;
+  }
+}
