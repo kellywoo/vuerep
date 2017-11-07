@@ -13,6 +13,9 @@
   font-weight: bold;
 }
 
+.fc-m-green {
+  color: $main_color_green;
+}
 /*align*/
 html .txt-l {
   text-align: left
@@ -49,6 +52,40 @@ html .v-base {
 
 .lo-col > li {
   float: left;
+}
+
+/*only greater than ie 9*/
+.flex-box {
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row
+}
+
+.flex-box.flex-col {
+  flex-direction: column
+}
+
+.flex-fix {
+  flex: 0 0 auto
+}
+
+.flex-rel {
+  flex: 1 1 auto;
+  overflow: hidden
+}
+
+.flex-start {
+  justify-content: flex-start
+}
+
+.flex-end {
+  justify-content: flex-end
+}
+
+.flex-center {
+  justify-content: center
 }
 
 @for $i from 1 through 10 {

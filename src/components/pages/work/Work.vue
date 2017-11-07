@@ -1,35 +1,60 @@
 <template>
-  <div class="app-page pg-work">
+  <div class="app-page pg-community">
     <div class="pg-align">
       <div class="pg-inner-head">
-        <h2 class="pg-title">{{i18n.title}}</h2>
-        <strong class="pg-summary">{{i18n.strong}}</strong>
-        <p class="pg-desc" v-html="i18n.desc"></p>
+        <h2 class="pg-title">&lt;Community/&gt;</h2>
       </div>
       <div class="pg-inner-body transition-box">
-        <v-slider class="service-list lo-col col-4">
-          <v-slider-item v-for="i in 4" :class="'n'+i" class="opac-0 ani-fadein" :key="i">
-            <div class="service-list-icon"></div>
-            <dl class="service-item">
-              <dt class="pg-inner-title txt-c f-roboto">{{i18n['s_title' + i]}}</dt>
-              <dd class="pg-desc">{{i18n['s_desc' + i]}}</dd>
-            </dl>
-          </v-slider-item>
-        </v-slider>
+        <ul class="community-list">
+          <li>
+            <figure class="community-kind" title="Slack">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="49 65 150 150" aria-label="Slack" shape-rendering="geometricPrecision">
+                <path fill="#ECB32D"
+                      d="M141.8 87.1c-1.9-5.7-8-8.8-13.7-7-5.7 1.9-8.8 8-7 13.7l28.1 86.4c1.9 5.3 7.7 8.3 13.2 6.7 5.8-1.7 9.3-7.8 7.4-13.4 0-.2-28-86.4-28-86.4z"></path>
+                <path fill="#63C1A0"
+                      d="M98.3 101.2c-1.9-5.7-8-8.8-13.7-7-5.7 1.9-8.8 8-7 13.7l28.1 86.4c1.9 5.3 7.7 8.3 13.2 6.7 5.8-1.7 9.3-7.8 7.4-13.4 0-.2-28-86.4-28-86.4z"></path>
+                <path fill="#E01A59"
+                      d="M177.2 158.6c5.7-1.9 8.8-8 7-13.7-1.9-5.7-8-8.8-13.7-7L84 166.1c-5.3 1.9-8.3 7.7-6.7 13.2 1.7 5.8 7.8 9.3 13.4 7.4.2 0 86.5-28.1 86.5-28.1z"></path>
+                <path fill="#331433"
+                      d="M102 183.1c5.6-1.8 12.9-4.2 20.7-6.7-1.8-5.6-4.2-12.9-6.7-20.7l-20.7 6.7 6.7 20.7z"></path>
+                <path fill="#D62027"
+                      d="M145.6 168.9c7.8-2.5 15.1-4.9 20.7-6.7-1.8-5.6-4.2-12.9-6.7-20.7l-20.7 6.7 6.7 20.7z"></path>
+                <path fill="#89D3DF"
+                      d="M163 115.1c5.7-1.9 8.8-8 7-13.7-1.9-5.7-8-8.8-13.7-7l-86.4 28.1c-5.3 1.9-8.3 7.7-6.7 13.2 1.7 5.8 7.8 9.3 13.4 7.4.2 0 86.4-28 86.4-28z"></path>
+                <path fill="#258B74"
+                      d="M87.9 139.5c5.6-1.8 12.9-4.2 20.7-6.7-2.5-7.8-4.9-15.1-6.7-20.7l-20.7 6.7 6.7 20.7z"></path>
+                <path fill="#819C3C"
+                      d="M131.4 125.4c7.8-2.5 15.1-4.9 20.7-6.7-2.5-7.8-4.9-15.1-6.7-20.7l-20.7 6.7 6.7 20.7z"></path>
+              </svg>
+            </figure>
+            <div class="community-num">{{slack}}<span>명</span></div>
+          </li>
+          <li>
+            <figure class="community-kind" title="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="-45 -45 360 360" arial-label="Facebook" shape-rendering="geometricPrecision">
+                <path id="Blue_1_" fill="#3C5A99"
+                      d="M248.082,262.307c7.854,0,14.223-6.369,14.223-14.225V18.812  c0-7.857-6.368-14.224-14.223-14.224H18.812c-7.857,0-14.224,6.367-14.224,14.224v229.27c0,7.855,6.366,14.225,14.224,14.225  H248.082z"></path>
+                <path id="f" fill="#FFFFFF"
+                      d="M182.409,262.307v-99.803h33.499l5.016-38.895h-38.515V98.777c0-11.261,3.127-18.935,19.275-18.935  l20.596-0.009V45.045c-3.562-0.474-15.788-1.533-30.012-1.533c-29.695,0-50.025,18.126-50.025,51.413v28.684h-33.585v38.895h33.585  v99.803H182.409z"></path>
+              </svg>
+            </figure>
+            <div class="community-num">{{facebook}}<span>명</span></div>
+          </li>
+        </ul>
       </div>
       <div class="btn-box txt-c">
-        <a href="#" class="btn-jump f-roboto">{{i18n.btn}}</a>
+        <a href="#" class="btn-jump f-roboto"></a>
       </div>
     </div>
   </div>
 </template>
 <script>
-  import { ko } from './lang'
-  import setLang from '@/mixin/lang'
-
+  import { $, requestAniFrame } from '@/util/util'
+  import easingEquations from '@/util/easing'
+  const fMember = 2133;
+  const sMember = 668;
   export default {
     name: 'work',
-    mixins: [setLang],
     props: {
       title: {
         type: String
@@ -37,11 +62,33 @@
     },
     data () {
       return {
-        language: 'work'
+        slack: 0,
+        facebook: 0,
+        current: 0,
+        to: 0
+      }
+    },
+    methods: {
+      tick () {
+        let p = this.current++ / this.to;
+        this.facebook = $.util.toCash(fMember * easingEquations[ 'easeOutSine' ](p));
+        this.slack = $.util.toCash(sMember * easingEquations[ 'easeOutSine' ](p));
+
+        if ( p < 1 ) {
+          requestAniFrame()(this.tick);
+        } else {
+          this.facebook = $.util.toCash(fMember);
+          this.slack = $.util.toCash(sMember);
+        }
       }
     },
     created () {
-      this.setLang()
+      this.to = 1500 * 60 / 1000
+    },
+    mounted () {
+      this.$parent.animateInit = () => {
+        setTimeout( () => this.tick(), 500)
+      }
     }
   }
 </script>

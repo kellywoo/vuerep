@@ -1,133 +1,131 @@
-var ParticlerDefaultConfig = (function () {
-  function ParticlerDefaultConfig () {
-    this.quantity = 20
-    this.lineWidth = 0.05
-    this.fillColor = '#000000'
-    this.minSize = 1
-    this.maxSize = 3
-    this.minimalLineLength = 300
-    this.speed = 30
-    this.frameDuration = 18
-    this.backgroundColor = 'transparent'
+import { requestAniFrame } from '@/util/util';
+const requestAnimationFrame = requestAniFrame(5);
+
+export default function () {
+  let confetties, i,
+    xpos = 0.9,
+    h = 0,
+    w = 0,
+    PI_2 = 2 * Math.PI;
+  const NUM_CONFETTI = 40,
+    COLORS = [
+      [ 235, 90, 70 ],
+      [ 97, 189, 79 ],
+      [ 242, 214, 0 ],
+      [ 0, 121, 191 ],
+      [ 195, 119, 224 ]
+    ],
+    canvas = document.getElementById('index_view'),
+    context = canvas.getContext('2d');
+
+  window.addEventListener('resize', resizeWindow, false);
+  window.onload = function () {
+    return setTimeout(resizeWindow, 0)
   }
 
-  return ParticlerDefaultConfig
-})()
-export const Particler = (function () {
-  function Particler (wrapperId, customConfig) {
-    this.wrapperId = wrapperId
-    this.config = new ParticlerDefaultConfig()
-    this.dotsArray = []
-    this.wrapper = document.getElementById(wrapperId)
-    this.canvas = this.wrapper.getContext('2d')
-    this.setConfig(customConfig)
-    this.wrapper.style.backgroundColor = this.config.backgroundColor
-    this.setWrapperSize()
-    this.generateDotsArray()
-    this.resizingHandler()
+  function resizeWindow () {
+    w = canvas.width = window.innerWidth;
+    return h = canvas.height = window.innerHeight
   }
 
-  Particler.prototype.setConfig = function (customConfig) {
-    var _this = this
-    if (customConfig !== undefined) {
-      (function () {
-        var item
-        for (item in _this.config) {
-          if (customConfig.hasOwnProperty(item) && _this.config[item] !== undefined) {
-            _this.config[item] = customConfig[item]
-          }
-        }
-      })()
-    }
+  function range (a, b) {
+    return (b - a) * Math.random() + a
   }
 
-  Particler.prototype.createDot = function (i, arr) {
-    var size
-    var vx
-    var vy
-    var posX
-    var posY
-    var angle = Math.random() * 360
-    var rads = angle * Math.PI / 180
-    // set radom size and position
-    size = Math.floor(Math.random() * (this.config.maxSize - this.config.minSize + 1) + this.config.minSize)
-    posX = Math.random() * this.wrapper.offsetWidth
-    posY = Math.random() * this.wrapper.offsetHeight
-    vx = Math.cos(rads) * (this.config.speed / this.config.frameDuration)
-    vy = Math.sin(rads) * (this.config.speed / this.config.frameDuration)
-    arr[i] = {
-      size: size,
-      posX: posX,
-      posY: posY,
-      vx: vx,
-      vy: vy
+  function drawCircle (a, b, c, d) {
+    context.beginPath();
+    context.moveTo(a, b);
+    context.bezierCurveTo(a - 17, b + 14, a + 13, b + 5, a - 5, b + 22);
+    context.lineWidth = 2;
+    context.strokeStyle = d;
+    return context.stroke()
+  }
+
+  function drawCircle2 (a, b, c, d) {
+    context.beginPath();
+    context.moveTo(a, b);
+    context.lineTo(a + 6, b + 9);
+    context.lineTo(a + 12, b);
+    context.lineTo(a + 6, b - 9);
+    context.closePath();
+    context.fillStyle = d;
+    return context.fill()
+  }
+
+  function drawCircle3 (a, b, c, d) {
+    context.beginPath();
+    context.moveTo(a, b);
+    context.lineTo(a + 5, b + 5);
+    context.lineTo(a + 10, b);
+    context.lineTo(a + 5, b - 5);
+    context.closePath();
+    context.fillStyle = d;
+    return context.fill()
+  }
+
+  document.onmousemove = function (a) {
+    return xpos = a.pageX / w
+  };
+
+  function Confetti () {
+    this.style = COLORS[ ~~range(0, 5) ];
+    this.rgb = 'rgba(' + this.style[ 0 ] + ',' + this.style[ 1 ] + ',' + this.style[ 2 ];
+    this.r = ~~range(2, 6);
+    this.r2 = 2 * this.r;
+    this.replace()
+  }
+
+  Confetti.prototype.replace = function () {
+    this.opacity = 0;
+    this.dop = 0.03 * range(1, 4);
+    this.x = range(-this.r2, w - this.r2);
+    this.y = range(-20, h - this.r2);
+    this.xmax = w - this.r;
+    this.ymax = h - this.r;
+    this.vx = range(0, 2) + 8 * xpos - 5;
+    return this.vy = 0.7 * this.r + range(-1, 1)
+  };
+  Confetti.prototype.draw = function () {
+    var a;
+    this.x += this.vx;
+    this.y += this.vy;
+    this.opacity += this.dop;
+    if ( this.opacity > 1 ) {
+      this.opacity = 1;
+      this.dop *= -1
     }
-  }
-  Particler.prototype.drawDots = function () {
-    var _this = this
-    var i
-    var j = this.config.quantity
-    var k
-    var el
-    var getDistance = function (x1, y1, x2, y2) {
-      return Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2))
+    if ( this.opacity < 0 || this.y > this.ymax ) {
+      this.replace();
     }
-    for (i = 0; i < j; i++) {
-      // define dots positions
-      el = this.dotsArray[i]
-      el.posX += el.vx
-      if (el.posX < 0 || el.posX > this.wrapper.offsetWidth) {
-        if (el.posX < 0) {
-          el.posX = 0
-        } else {
-          el.posX = this.wrapper.offsetWidth
-        }
-        el.vx = -el.vx
-      }
-      el.posY += el.vy
-      if (el.posY < 0 || el.posY > this.wrapper.offsetHeight) {
-        el.vy = -el.vy
-      }
-      // draw dots
-      this.canvas.beginPath()
-      this.canvas.fillStyle = this.config.fillColor
-      this.canvas.arc(el.posX, el.posY, el.size, 0, 2 * Math.PI)
-      // draw lines between dots
-      for (k = 0; k < j; k++) {
-        if (k !== i) {
-          this.canvas.lineWidth = this.config.lineWidth
-          this.canvas.strokeStyle = this.config.fillColor
-          this.canvas.moveTo(el.posX, el.posY)
-          if (getDistance(el.posX, el.posY, this.dotsArray[k].posX, this.dotsArray[k].posY) < this.config.minimalLineLength) {
-            this.canvas.lineTo(this.dotsArray[k].posX, this.dotsArray[k].posY)
-            this.canvas.stroke()
-          }
-        }
-      }
-      this.canvas.fill()
+    if ( !( (a = this.x) > 0 && a < this.xmax) ) {
+      this.x = (this.x + this.xmax) % this.xmax;
     }
-    this.canvas.fillStyle = this.config.fillColor
-    setTimeout(function () {
-      _this.canvas.clearRect(0, 0, _this.wrapper.width, _this.wrapper.height)
-      _this.drawDots()
-    }, this.config.frameDuration)
+    drawCircle(~~this.x, ~~this.y, this.r, this.rgb + ',' + this.opacity + ')');
+    drawCircle3(0.5 * ~~this.x, ~~this.y, this.r, this.rgb + ',' + this.opacity + ')');
+    return drawCircle2(1.5 * ~~this.x, 1.5 * ~~this.y, this.r, this.rgb + ',' + this.opacity + ')')
+  };
+
+  function getConfetti () {
+    var a, b, c;
+    c = [];
+    i = a = 1;
+    for ( b = NUM_CONFETTI; b >= 1 ? a <= b : a >= b; i = b >= 1 ? ++a : --a ) c.push(new Confetti());
+    return c;
   }
-  Particler.prototype.generateDotsArray = function () {
-    var i = 0
-    for (i; i < this.config.quantity; i++) {
-      this.createDot(i, this.dotsArray)
+
+  confetties = getConfetti();
+  function step () {
+    var a, b, c, d;
+    requestAnimationFrame(step);
+    context.clearRect(0, 0, w, h);
+    d = [];
+    b = 0;
+    for ( c = confetties.length; b < c; b++ ) {
+      a = confetties[ b ];
+      d.push(a.draw());
     }
-    this.drawDots()
+    return d
   }
-  Particler.prototype.setWrapperSize = function () {
-    this.canvas.canvas.width = this.wrapper.offsetWidth
-    this.canvas.canvas.height = this.wrapper.offsetHeight
-  }
-  Particler.prototype.resizingHandler = function () {
-    var _this = this
-    window.addEventListener('resize', function () {
-      _this.setWrapperSize()
-    })
-  }
-  return Particler
-})()
+
+  step();
+}

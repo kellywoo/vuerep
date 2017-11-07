@@ -20,7 +20,7 @@ export default function (scrollTargetY, speed, easing) {
     var t = easingEquations[easing](p)
 
     if (p < 1) {
-      requestAniFrame(tick)
+      requestAniFrame()(tick)
 
       window.scrollTo(0, scrollY + ((scrollTargetY - scrollY) * t))
     } else {

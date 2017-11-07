@@ -31,8 +31,11 @@ html:lang(ko) {
   opacity: 0;
   transform: translateX(-20px);
   transition: opacity .3s ease-in-out, transform .3s ease-in-out;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: $main_color_dark;
   img {
-    height: 60px;
+    height: $app_header_height - 10px;
   }
 }
 
@@ -78,7 +81,12 @@ html:lang(ko) {
   .pg-title {
     font-size: 3rem;
     text-align: center;
-    line-height: 1;
+    line-height: 1.2;
+    color: #fff;
+    background: linear-gradient($main_color_green 0%, $main_color_dark 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
   }
 
   .pg-summary {
@@ -86,6 +94,7 @@ html:lang(ko) {
     font-size: 1.250rem;
     text-align: center;
     width: 80%;
+    color: $main_color_dark;
     margin: 2rem auto 0;
   }
 

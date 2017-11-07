@@ -1,7 +1,7 @@
 <template>
   <ul class="scroll-menu">
     <li v-for="(item, idx) in items" :key="idx">
-      <a href="#" class="scroll-menu-item" :class="{['n-' + (idx+1)]: true, 'is-active': isActive===item}"
+      <a href="#" class="scroll-menu-item" :class="{['n-' + (idx+1)]: true, 'is-active': isActive === item}"
          @click.prevent="menuMove(item)"
          v-html="generateItem(item)"></a>
     </li>
@@ -38,6 +38,7 @@
         item.markDirty();
       },
       menuMove (item) {
+        console.log($.offset(item.$el).top);
         this.activeMenu(item);
         scrollTo($.offset(item.$el).top, 2000)
       },

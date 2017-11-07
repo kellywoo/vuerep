@@ -7,12 +7,7 @@
     <div class="gnb-nav">
       <v-autoscroll-menu :generateItem="generateItem" class="gnb-menu">
       </v-autoscroll-menu>
-      <div class="gnb-quick">
-        <a href="" target="_blank">Go to Cafe</a>
-      </div>
     </div>
-
-    <v-switcher class="gnb-lang" :left="koObj" :right="enObj" @onChange="changeLang" :start="'right'"></v-switcher>
     <button type="button" class="btn-gnb-close"
             v-show="isOpen"
             @click="isOpen=false">

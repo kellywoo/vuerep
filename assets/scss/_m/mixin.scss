@@ -1,9 +1,6 @@
-$pg_color_1 : #d5d5d5;
-$pg_color_2 : #ffc564;
-$pg_color_3 : #f87c56;
-$pg_color_4 : #46d1f0;
-$pg_color_5 : #88b745;
-$pg_color_6 : #3f46ae;
+$main_color_green: rgba(65,184,131,1);
+$main_color_dark : #344a61;
+$pg_color : #d5d5d5 #ffc564 #f87c56 #46d1f0 #88b745 #3f46ae;
 
 @mixin li-icons($n,$width,$name) {
   @for $i from 1 through $n {
@@ -30,7 +27,7 @@ $desktop_minimum_width: 769px;
 $mobile_width: 450px;
 $app_padding: 40px;
 $app_mobile_padding: 2rem;
-$app_header_height: 75px;
+$app_header_height: 50px;
 $easing_cubic: cubic-bezier(0.215, 0.610, 0.55, 1.000);
 //n은 디자인 사이즈
 @function mb-px( $n ) {
