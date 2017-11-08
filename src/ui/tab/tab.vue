@@ -14,8 +14,7 @@
     },
     data () {
       return {
-        isActive: false,
-        title: 'hello'
+        isActive: false
       }
     }
   }

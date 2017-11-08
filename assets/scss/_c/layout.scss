@@ -85,7 +85,7 @@ html:lang(ko) {
 
   .pg-align {
     @include pg_align();
-    padding: 15vh 3rem 15vh;
+    padding: 12vh 3rem 10vh;
   }
   .pg-title {
     @include pg_title();

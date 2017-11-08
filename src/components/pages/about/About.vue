@@ -20,9 +20,9 @@
           </li>
           <li>
             <dl class="about-launch-desc">
-              <dt>무엇을</dt>
+              <dt>무엇을?</dt>
               <dd class="img-box">
-                <img src="/assets/img/logo-round.png" alt="evan you" />
+                <img src="/assets/img/logo_round.png" alt="evan you" />
               </dd>
               <!--<dd>2014년 2월 11일</dd>-->
             </dl>

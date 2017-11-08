@@ -28,7 +28,7 @@
         isActive: 0,
         screenHeight: 0,
         pad: function () {
-          return Math.floor(window.innerHeight * 2 / 5);
+          return Math.floor(window.innerHeight * 1 / 5);
         }
       }
     },
@@ -38,7 +38,6 @@
         item.markDirty();
       },
       menuMove (item) {
-        console.log($.offset(item.$el).top);
         this.activeMenu(item);
         scrollTo($.offset(item.$el).top, 2000)
       },

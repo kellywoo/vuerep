@@ -14,8 +14,8 @@
       <v-autoscroll-section title="Community" class="left">
         <page-work class="app-pad" title="Community"></page-work>
       </v-autoscroll-section>
-      <v-autoscroll-section title="Activity" class="right">
-        <page-skills class="app-pad" title="Activity"></page-skills>
+      <v-autoscroll-section title="Statistics" class="right">
+        <page-skills class="app-pad" title="Statistics"></page-skills>
       </v-autoscroll-section>
       <v-autoscroll-section title="Vuetiful" class="left">
         <page-blog class="app-pad" title="Vuetiful Korea"></page-blog>

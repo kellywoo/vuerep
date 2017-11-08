@@ -7,6 +7,7 @@ import { Dialogue } from './modal'
 import MsgBox from './msgBox'
 import Button from './button'
 import {Slider, SliderItem} from './slider'
+import {Tab, Tabs} from './tab'
 
 export default {
   install (Vue, params = {}){
@@ -31,5 +32,7 @@ export default {
     Vue.component('v-slider', Slider);
     Vue.component('v-slider-item', SliderItem);
     Vue.component('v-dialogue', Dialogue);
+    Vue.component('v-tab', Tab);
+    Vue.component('v-tabs', Tabs);
   }
 }

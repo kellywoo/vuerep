@@ -29,11 +29,6 @@
       this.$nextTick(() => {
         Confetti();
       })
-      this.$parent.animateInit = () => {
-        setTimeout(() => {
-          this.$parent.goNext()
-        }, 5000)
-      }
     }
   }
 </script>

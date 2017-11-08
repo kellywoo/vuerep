@@ -26,9 +26,13 @@
         });
       }
     },
-    created () {
-      this.tabs = this.$children
+    mounted () {
+      this.activeChild(this.$children[0]);
     }
   }
 </script>
-<style></style>
+<style lang="scss">
+  .v-tab-menu {
+
+  }
+</style>
