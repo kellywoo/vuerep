@@ -5,23 +5,23 @@
       <gnb></gnb>
     </header>
     <v-autoscroll class="app-content">
-      <v-autoscroll-section title="Home" :minHeight="'100vh'" :arrow="true">
-        <page-home class="app-pad"></page-home>
+      <v-autoscroll-section title="intro" :minHeight="'100vh'" :arrow="true">
+        <page-home class="app-pad" title="intro"></page-home>
       </v-autoscroll-section>
       <v-autoscroll-section title="About" class="right">
-        <page-about class="app-pad"></page-about>
+        <page-about class="app-pad" title="About"></page-about>
       </v-autoscroll-section>
-      <v-autoscroll-section title="Skills" class="right">
-        <page-skills class="app-pad"></page-skills>
+      <v-autoscroll-section title="Community" class="left">
+        <page-work class="app-pad" title="Community"></page-work>
       </v-autoscroll-section>
-      <v-autoscroll-section title="Work" class="left">
-        <page-work class="app-pad"></page-work>
+      <v-autoscroll-section title="Activity" class="right">
+        <page-skills class="app-pad" title="Activity"></page-skills>
       </v-autoscroll-section>
-      <v-autoscroll-section title="Blog" class="left">
-        <page-blog class="app-pad"></page-blog>
+      <v-autoscroll-section title="Vuetiful" class="left">
+        <page-blog class="app-pad" title="Vuetiful Korea"></page-blog>
       </v-autoscroll-section>
       <v-autoscroll-section title="Contact">
-        <page-contact></page-contact>
+        <page-contact title="Contact"></page-contact>
       </v-autoscroll-section>
     </v-autoscroll>
   </div>

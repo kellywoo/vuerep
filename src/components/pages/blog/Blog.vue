@@ -2,21 +2,31 @@
   <div class="app-page pg-blog">
     <div class="pg-align">
       <div class="pg-inner-head">
-        <h2 class="pg-title">{{i18n.title}}</h2>
-        <p class="pg-desc">{{i18n.desc}}</p>
+        <h2 class="pg-title">{{title}}</h2>
+        <p class="pg-summary">뷰티풀 코리아는 이제 3회를 맞이합니다.</p>
+        <p class="pg-desc">1, 2회를 성공적으로 개최하고 이제 3회를 준비, 앞으로도 지속적으로 커퓨니티를 발전시켜 나갑니다.</p>
       </div>
       <div class="pg-inner-body transition-box">
-        <template v-for="j in 2">
-          <ul class="blog-list">
-            <li v-for="i in 2" :class="'fade-in n' + (2*(j-1)+i)" class="opac-0 ani-fadein">
-              <dl class="blog-list-item">
-                <dt>{{ i18n['s_title' + (2*(j-1)+i)]}}</dt>
-                <dd class="pg-desc">{{i18n['s_desc' + (2*(j-1)+i)]}}</dd>
-                <dd class="blog-list-icon"></dd>
-              </dl>
-            </li>
-          </ul>
-        </template>
+        <div class="vuetiful-history">
+          <div>
+            <h4>1회</h4>
+            <div>
+
+            </div>
+            <dl>
+              <dt>일시</dt>
+              <dd></dd>
+              <dt>위치</dt>
+              <dd></dd>
+              <dt>참석자수</dt>
+              <dd></dd>
+              <dt>발표자수</dt>
+              <dd></dd>
+              <dt>발표자료</dt>
+              <dd></dd>
+            </dl>
+          </div>
+        </div>
       </div>
       <div class="btn-box txt-c">
         <a href="#" target="_blank" class="btn-jump f-roboto">{{i18n.btn}}</a>

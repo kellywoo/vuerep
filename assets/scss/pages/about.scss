@@ -1,3 +1,7 @@
+.pg-about {
+  padding-top: 0 !important;
+}
+
 .about-launch {
   margin-top: 3rem;
   .img-box {
@@ -8,11 +12,17 @@
     overflow: hidden;
     background-color: #0f0f0f;
     text-align: center;
-    transition: transfrom .3s;
+    transition: transform .3s;
     transform: scale(1);
     &:hover {
-      transform: scale(1.2);
-
+      transform: scale(1.1);
+      box-shadow: 0 15px 35px rgba(50, 50, 93, 0.2), 0 5px 15px rgba(0, 0, 0, 0.1);
+      .i-result {
+        animation-name: fadeInUpBig;
+        animation-iteration-count: 1;
+        animation-duration: 0.3s;
+        animation-fill-mode: forwards;
+      }
     }
     & > img {
       width: 100%;
@@ -21,18 +31,27 @@
       color: #fff;
       padding-top: 32px;
     }
+    .i-result {
+      display: inline-block;
+      margin-top: 0.3em;
+      opacity: 0;
+      font-size: 1.25em;
+    }
   }
 }
+
 .about-launch-desc {
   & > dt {
     text-align: center;
     margin-bottom: 3rem;
   }
 }
+
 .about-launch-more {
   margin-top: 5rem;
   text-align: center;
 }
+
 .btn-more-launch {
   display: inline-block;
   padding: 1rem 2rem;
@@ -40,6 +59,7 @@
   border-radius: 3px;
   @include ghostBtn(transparent, $main_color_green);
 }
+
 @include mq-desktop {
 
 }

@@ -39,9 +39,6 @@ html:lang(ko) {
   }
 }
 
-.app-page {
-  min-height: inherit;
-}
 
 .client.is-fixed {
   .app-logo {
@@ -60,33 +57,40 @@ html:lang(ko) {
   }
 }
 
-.pg-align {
+@mixin pg_align() {
   position: relative;
+  background-color: #fff;
+  box-shadow: 0 15px 35px rgba(50,50,93,.07), 0 5px 15px rgba(0,0,0,.1), inset 0 10px 20px rgba(0,0,0,.05);
+}
+
+@mixin pg_title () {
+  text-align: center;
+  color: #000;
   &::after {
     content: ' ';
-    position: absolute;
-    border-bottom: 1px solid #e8e8e8;
-    bottom: 0;
-    left: -20px;
-    right: -20px;
+    background: linear-gradient(90deg, $main_color_green 0%, $main_color_dark 100%);
+    width: 7rem;
+    margin: 1rem auto 4rem;
+    display: block;
+    height: 3px;
   }
+}
+.auto-section .app-page {
+  width: 100%;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 @include mq-desktop {
 
   .pg-align {
+    @include pg_align();
     padding: 15vh 3rem 15vh;
-    vertical-align: middle;
   }
   .pg-title {
-    font-size: 3rem;
-    text-align: center;
+    @include pg_title();
     line-height: 1.2;
-    color: #fff;
-    background: linear-gradient($main_color_green 0%, $main_color_dark 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    white-space: nowrap;
+    font-size: 3rem;
   }
 
   .pg-summary {
@@ -107,7 +111,7 @@ html:lang(ko) {
   }
 
   .pg-title + .pg-desc {
-    margin-top: 3.25rem;
+    margin-top: 4rem;
   }
 
   .pg-desc-left {
@@ -119,7 +123,7 @@ html:lang(ko) {
   }
 
   .pg-inner-body {
-    margin-top: 8.75rem;
+    margin-top: 5rem;
   }
 
   .pg-inner-title {
@@ -148,28 +152,16 @@ html:lang(ko) {
     display: block
   }
   .pg-align {
-    padding: 100px 0 90px;
-    &::after {
-      left: 0px;
-      right: 0px;
-    }
+    @include pg_align();
+    padding: 4rem 2rem 3rem;
   }
   .app-pad {
     padding: 0 #{$app_mobile_padding};
   }
-  .app-page {
-    display: table;
-    width: 100%;
-
-    .pg-align {
-      display: table-cell;
-      vertical-align: middle;
-    }
-  }
 
   .pg-title {
+    @include pg_title();
     font-size: mb-rem(50);
-    text-align: center;
     line-height: 1;
   }
 

@@ -1,7 +1,15 @@
 /*home*/
+.pg-home {
+  position: fixed;
+  width: 100%;
+  .pg-align {
+    background-color: transparent !important;
+    box-shadow: none
+  }
+}
 
 .home-visual {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -16,7 +24,7 @@
   text-align: center;
   letter-spacing: -5px;
   padding: 2rem 0 2rem;
-  text-shadow: 0 3px 10px rgba(0,0,0,0.6);
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
   img {
     width: 40vw;
     max-width: 360px;
@@ -25,32 +33,17 @@
 
 .pg-home-desc {
   font-size: 1.125rem;
-  color: rgba(53,73,94, 0.8);
+  color: rgba(53, 73, 94, 0.8);
   text-align: center;
   margin-bottom: 20px;
   line-height: 2;
 }
 
-.pg-home {
-  background-attachment: fixed;
-  background-size: cover;
-  max-width: none !important;
-}
-
 /*home*/
 @include mq-desktop {
-  .pg-home {
-    //background: #{$pg_color_1} url('/assets/img/bgs/bg_home.svg') center center no-repeat;
-    background-size: contain;
-    background-attachment: fixed;
-  }
 
   .pg-home {
-    display: table;
-    width: 100%;
-    vertical-align: middle;
     .pg-align {
-      display: table-cell;
       padding-top: 8vh;
     }
   }

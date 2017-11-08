@@ -7,32 +7,53 @@ $palette: #51c0bf, #59add0, #7095e1, #9fa3e3, #c993d4, #db8db2, #f1c3d0;
   opacity: 0;
   transform: translateY(30px);
 }
+.community-summary {}
+
 .activity-content {
   position: relative;
   min-height: 200px;
 }
 .activity-list {
-  text-align: center;
-  margin-left: 50%;
+  padding: 0 2rem;
+
 }
 
 .activity-list-item {
-  display: block;
-  margin: 0 auto;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
   @for $i from 1 through length($palette) {
-    &:nth-child(#{$i}) > a {
-      background-color: nth($palette, $i);
+    &:nth-child(#{$i}){
+      color: nth($palette, $i);
+      & > a {
+        color: nth($palette, $i);
+        background-color: transparent;
+        border: 1px solid nth($palette, $i);
+       &:hover {
+         background-color: nth($palette, $i);
+         border: 1px solid transparent;
+         color: #fff;
+       }
+    }
     }
   }
-
+  .community-page {
+    padding-left: 1em;
+  }
   & > a {
+    text-align: center;
     color: rgba(#fff, 0.7);
+    font-size: 12px;
     display: block;
+    padding: 0 1rem;
     position: relative;
-    line-height: 40px;
+    line-height: 35px;
     margin: 10px;
     overflow: hidden;
     border-radius: 5px;
+    min-width: 4rem;
     box-shadow: 0 15px 35px rgba(50,50,93,.07), 0 5px 15px rgba(0,0,0,.1);
     //&::after {
     //  position: absolute;
@@ -77,9 +98,6 @@ $palette: #51c0bf, #59add0, #7095e1, #9fa3e3, #c993d4, #db8db2, #f1c3d0;
 }
 
 @include mq-tab {
-  .activity-list {
-    margin-top: 2rem;
-  }
 
 }
 

@@ -2,7 +2,7 @@
   <div class="app-page pg-skills">
     <div class="pg-align">
       <div class="pg-inner-head">
-        <h2 class="pg-title">&lt;Activity/&gt;</h2>
+        <h2 class="pg-title">{{title}}</h2>
         <p class="pg-desc">
           영어로만 제공되어 읽기 힘든 API 문서를 한국어로 번역 누구나 쉽게 Vue.js를 배울 수 있도록 관리하고 vuex, router, next.js와 같이 vue와 관련된 많은 내용들을 업데이트 하고 있습니다. </p>
       </div>
@@ -28,8 +28,6 @@
   </div>
 </template>
 <script>
-  import { ko } from './lang.js'
-  import setLang from '@/mixin/lang'
   import SkillGraph from './SkillGraph'
 
   let pages = [
@@ -43,7 +41,6 @@
   ];
   export default {
     name: 'skills',
-    mixins: [ setLang ],
     props: {
       title: {
         type: String
@@ -58,9 +55,6 @@
           desc: '이곳에 있는 모든 페이지들은 Vue community에 의해 한국어로 번역, 관리되고 있습니다.'
         }
       }
-    },
-    created () {
-      this.setLang();
     },
     methods: {
       shiftPages () {

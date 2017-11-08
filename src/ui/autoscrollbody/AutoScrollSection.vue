@@ -1,6 +1,6 @@
 <template>
   <section class="auto-section _autoSection" :style="styleObj" :class="{'with-next': arrow, 'dirty': dirty}">
-    <slot :dirty="dirty"></slot>
+    <slot></slot>
     <button type="button" class="btn-autoscroll-next"  v-if="arrow"
             @click="goNext">
       <svg height="40" width="40" viewBox="0 0 80 46">
@@ -83,9 +83,11 @@
   .auto-section {
     position: relative;
     width: inherit;
-    overflow-x: hidden;
-    overflow-y: hidden;
-
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
   }
 
   .auto-section {
@@ -120,27 +122,29 @@
     display: block;
     width: 60px;
     height: 60px;
-    opacity: 0.5;
     position: absolute;
-    border-radius: 50%;
-    bottom: 50px;
+    border-radius: 5px 5px 0 0;
+    bottom: 0px;
+    background-color: $main_color_green;
     left: 50%;
     margin-left: -30px;
     transition: all 0.5s linear;
     outline: none;
     svg {
+      vertical-align: top;
       margin-top: 5px;
       width: 50px;
       height: 50px;
+      transition: transform 0.3s;
+      polyline {
+        stroke: #fff !important;
+      }
     }
     &:hover {
-      bottom: 30px;
       opacity: 1;
-      background-color: #54aa8e;
+      background-color: $main_color_dark;;
       svg {
-        polyline {
-          stroke: #fff !important;
-        }
+        transform: rotate(180deg);
       }
     }
   }
