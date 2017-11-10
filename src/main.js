@@ -11,6 +11,7 @@ import LangContact from '@/components/pages/contact/lang'
 import LangHome from '@/components/pages/home/lang'
 import LangSkills from '@/components/pages/skills/lang'
 import LangWork from '@/components/pages/work/lang'
+
 function setLang (v) {
   document.documentElement.lang = v;
 
@@ -20,6 +21,7 @@ Vue.config.productionTip = false
 if (window.glObj.browser.support) {
   Vue.use(UIComponent)
   Vue.use(throttle)
+
   var Lang = {
     ko: {
       about: LangAbout.$ko,

@@ -122,6 +122,9 @@ html .v-base {
   opacity: 0;
 }
 
+.break-url {
+  word-break: break-all;
+}
 .clear-fix::after {
   content: ' ';
   display: block;

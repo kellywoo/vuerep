@@ -17,7 +17,6 @@ $gnb_width: 200px;
     left: 0;
     top: 0;
     z-index: 100;
-    background: url('/assets/img/bgs/bg_transparent.png') 0 0 repeat;
 
     .gnb-lang {
       position: absolute;
@@ -61,28 +60,6 @@ $gnb_width: 200px;
           }
         }
       }
-      //&.n-1 {
-      //  color: $pg_color_1;
-      //  &::after {
-      //    background-color: $pg_color_1;
-      //  }
-      //}
-      //&.n-2 {
-      //  color: $pg_color_2;
-      //}
-      //&.n-3 {
-      //  color: $pg_color_3;
-      //}
-      //&.n-4 {
-      //  color: $pg_color_4;
-      //}
-      //&.n-5 {
-      //  color: $pg_color_5;
-      //}
-      //&.n-6 {
-      //  color: $pg_color_6;
-      //}
-
       &.is-active {
         &::after {
           content: ' ';
@@ -114,21 +91,16 @@ $gnb_width: 200px;
 }
 
 @include mq-tab {
-  $btn_icon_size: 32px;
-  .is-fixed {
-    .btn-gnb-open {
-      background-position-x: -1*$btn_icon_size;
-    }
-  }
+
   $gnb_mb_width: 350px;
   .gnb {
     width: $gnb_mb_width;
     top: 0;
-    padding: 69px 0;
+    padding: #{$app_header_mobile_height} 0;
     bottom: 0;
     position: fixed;
     right: -1*$gnb_mb_width;
-    background-color: rgba(18, 18, 18, 0.8);
+    background-color: rgba($main_color_dark, 0.8);
     z-index: 100;
     overflow-y: hidden;
     transition: right .4s;
@@ -137,38 +109,65 @@ $gnb_width: 200px;
     }
   }
 
-  %btn-tgg {
+  .btn-gnb-toggle {
+    $btn_size: 36px;
+    $btn_icon_size: 30px;
+    $btn_pad: ( $btn_size - $btn_icon_size ) / 2;
+    outline: none;
     position: fixed;
-    top: 18px;
-    right: 18px;
-    @include square($btn_icon_size);
-    padding: 2px;
+    top: ($app_header_mobile_height - $btn_size)/ 2;
+    right: 20px;
+    padding: $btn_pad;
+    @include square($btn_size);
     display: block;
     font-size: 30px;
-    background-image: url('/assets/img/bgs/icon_gnb_btn.png');
-    background-size: auto #{$btn_icon_size};
-    background-position-y: top;
-    background-repeat: no-repeat;
-  }
-  .btn-gnb-open {
-    @extend %btn-tgg;
-    color: rgba(255, 255, 255, 0.5);
-    background-position-x: 0
-  }
-  .btn-gnb-close {
-    @extend %btn-tgg;
-    color: #fff;
-    background-position-x: -2 * $btn_icon_size;
+      .bar {
+      $bar_height: 4px;
+      display: block;
+      position: absolute;
+      height: $bar_height;
+      width: $btn_icon_size;
+      background: $main_color_green;
+      border-radius: 9px;
+      opacity: 1;
+      left: $btn_pad;
+      transform: rotate(0deg);
+      -webkit-transition: .25s ease-in-out;
+      &:nth-child(1) {
+        top: $btn_pad;
+      }
+
+      &:nth-child(2) {
+        top: ($btn_size - $bar_height) / 2;
+      }
+
+      &:nth-child(3) {
+        top: $btn_size - $bar_height -$btn_pad;
+      }
+    }
+    &.is-open {
+      .bar {
+        &:nth-child(1) {
+          top: 18px;
+          transform: rotate(135deg);
+        }
+        &:nth-child(2) {
+          opacity: 0;
+          left: -60px;
+        }
+        &:nth-child(3) {
+          top: 18px;
+          -webkit-transform: rotate(-135deg);
+        }
+      }
+    }
   }
 
   .gnb-nav {
     position: relative;
     padding: 10px 0;
     font-size: 1.25rem;
-    box-shadow: 0 0 6px 0 rgba(255, 255, 255, 0.08);
     color: rgba(255, 255, 255, 0.5);
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
   }
 
   .gnb-menu > li:nth-child(1) {
@@ -178,46 +177,5 @@ $gnb_width: 200px;
   .gnb-nav .scroll-menu-item {
     display: block;
     padding: 16px 32px;
-  }
-
-  .gnb-lang {
-    margin: 10px;
-    position: absolute;
-    color: #898989;
-    top: 10px;
-    left: 23px;
-  }
-  .gnb-quick {
-    position: absolute;
-    top: 100%;
-    width: 100%;
-    margin-top: 30px;
-    text-align: center;
-    & > a {
-      display: inline-block;
-      border-radius: 20px;
-      line-height: 25px;
-      padding: 8px 15px;
-      background-color: #40d56d;
-      white-space: nowrap;
-      opacity: 1;
-      color: #fff;
-      letter-spacing: 0;
-      &::after {
-        content: ' ';
-        position: relative;
-        display: inline-block;
-        margin-left: 10px;
-        vertical-align: middle;
-        @include square(25px);
-        background: url('/assets/img/bgs/icon_cafe.png');
-        background-position: 0 -25px;
-      }
-    }
-    &::before {
-      border: none;
-      padding-bottom: 8px;
-    }
-
   }
 }

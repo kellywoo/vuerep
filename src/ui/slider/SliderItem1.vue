@@ -1,7 +1,7 @@
 <template>
-  <figure class="v-photostack-item">
+  <li class="v-slider-item">
     <slot></slot>
-  </figure>
+  </li>
 </template>
 <script>
   export default {

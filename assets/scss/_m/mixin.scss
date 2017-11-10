@@ -28,6 +28,7 @@ $mobile_width: 450px;
 $app_padding: 40px;
 $app_mobile_padding: 1rem;
 $app_header_height: 50px;
+$app_header_mobile_height: 50px;
 $easing_cubic: cubic-bezier(0.215, 0.610, 0.55, 1.000);
 //n은 디자인 사이즈
 @function mb-px( $n ) {

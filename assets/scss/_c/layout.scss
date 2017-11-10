@@ -77,15 +77,15 @@ html:lang(ko) {
 }
 .auto-section .app-page {
   width: 100%;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 12vh;
+  padding-bottom: 12vh;
 }
 
 @include mq-desktop {
 
   .pg-align {
     @include pg_align();
-    padding: 12vh 3rem 10vh;
+    padding: 12vh 10vw 10vh;
   }
   .pg-title {
     @include pg_title();
@@ -142,9 +142,6 @@ html:lang(ko) {
   html {
     font-size: 15px;
   }
-  .app-header {
-    height: 70px
-  }
   .app-logo img {
     height: 40px;
   }
@@ -153,7 +150,12 @@ html:lang(ko) {
   }
   .pg-align {
     @include pg_align();
-    padding: 4rem 2rem 3rem;
+    padding: 4rem 3rem 3rem;
+    @include mq-mobile {
+      .pg-align {
+        padding: 3rem 2rem 3rem;
+      }
+    }
   }
   .app-pad {
     padding: 0 #{$app_mobile_padding};

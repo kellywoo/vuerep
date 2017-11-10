@@ -8,6 +8,8 @@
         </p>
       </div>
       <div class="pg-inner-body">
+        <h3>vue-cli downloads in past 1year from npm</h3>
+        <div id="vue_download"></div>
         <img src="/assets/img/download.png" alt="">
         <img src="/assets/img/stat2.jpg" alt="">
       </div>
@@ -15,6 +17,11 @@
   </div>
 </template>
 <script>
+  import { bb, d3 } from '/nm/billboard.js/src/core.js'
+  const $http = require('axios')
+
+  const npmurl =
+    'https://api.npmjs.org/downloads/range/!!!/vue-cli'
   let pages = [
     { name: 'Vue.js', url: 'https://kr.vuejs.org/', idx: 1 },
     { name: 'Vuex', url: 'https://vuex.vuejs.org/kr/', idx: 2 },
@@ -47,7 +54,42 @@
       },
       display (item) {
         this.displayingItem = item;
+      },
+      drawChart (data) {
+        bb.generate({
+          bindto: '#vue_download',
+          data: {
+            'x':'x',
+            'columns': data
+          },
+          axis: {
+            x: {
+              type: 'timeseries',
+              tick: {
+                format: "%Y-%m-%d"
+              }
+            }
+          }
+        });
       }
+    },
+    beforeCreate () {
+      let url = npmurl.replace('!!!','last-year')
+      $http.get(url).then((res) => {
+        let data = res.data.downloads.reduce((p,c) => {
+          p[0].push(c.day)
+          p[1].push(c.downloads)
+          return p;
+        },[['x'],['downloads']]);
+        console.log(data);
+        if (data.length && document.getElementById('vue_download')) {
+          this.drawChart(data)
+        } else {
+          setTimeout( () => {
+            this.drawChart(data);
+          }, 300)
+        }
+      })
     },
     mounted () {
       this.$parent.animateInit = () => {
@@ -56,4 +98,15 @@
     }
   }
 </script>
+<style lang="scss">
+  .bb-tooltip-container {
+    max-width: 170px  !important;
+    .bb-tooltip {
+      table-layout: auto;
+    }
+    .name {
+      width: 100px;
+    }
+  }
+</style>
 

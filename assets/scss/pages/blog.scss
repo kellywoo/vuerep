@@ -10,21 +10,29 @@ $pad: 112px;
 }
 
 .vuetiful-desc {
+  $pad: 10px;
   & > dt {
-
+    float: left;
+    clear: both;
+    padding: #{$pad} 5px;
+  }
+  & > dd {
+    padding: #{$pad} 0 #{$pad} 120px;
+    border-bottom: 1px dotted #444;
   }
 }
 
 .presenter-list {
-  & >li {
+  & > li {
     display: inline-block;
-    margin: 0 5px;
+    vertical-align: top;
+    margin: 0 3px;
+    line-height: 0;
     & > img {
       vertical-align: top;
-      width: 100%;
+      box-shadow: 0 0 0px 1px rgba(0,0,0,0.08);
       border-radius: 50%;
-      @include square(40px);
-      border: 1px solid rgba(#cecece, 0.5);
+      @include square(36px);
     }
   }
 }
@@ -68,56 +76,13 @@ $pad: 112px;
 
 
 @include mq-desktop {
-  .pg-blog .pg-inner-body {
-    margin-top: 90px;
-    margin-bottom: 75px;
-  }
-
-  .blog-list > li {
-    display: table-cell;
-    width: 50%;
-    padding: 23px 2rem;
-    vertical-align: middle;
-
-    & > dl {
-      padding-left: $pad + 50px;
-      position: relative;
-      min-height: $pad;
+  .vuetiful-pics {
+    img {
     }
-
   }
-
-  .blog-list-item {
-    display: table-cell;
-    vertical-align: middle;
-    .pg-desc {text-align: left;}
-  }
-
-  .blog-list-item dt {
-    font-weight: 600;
-    line-height: 1em;
-    margin-bottom: 1em;
-  }
-
 
 }
 
 @include mq-tab {
-  .blog-list > li {
-    padding: #{$pad + 30px} 2rem 40px;
-    text-align: center;
-    position: relative;
-  }
-  .blog-list-icon {
-    top: 0;
-    left: 50%;
-    margin: 0 0 0 #{$pad/-2};
-  }
-  .blog-list-item dt {
-    font-weight: 600;
-    line-height: 1em;
-    font-size: 1.25rem;
-    margin-bottom: -10px;
-  }
 }
 

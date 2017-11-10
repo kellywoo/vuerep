@@ -4,15 +4,16 @@
   width: 100%;
   .pg-align {
     background-color: transparent !important;
-    box-shadow: none
+    box-shadow: none;
+    overflow: hidden;
   }
 }
 
 .home-visual {
-  position: fixed;
+  position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: -10%;
+  width: 120%;
   height: 100%;
 }
 

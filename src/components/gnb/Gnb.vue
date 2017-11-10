@@ -1,39 +1,30 @@
 <template>
   <nav class="gnb f-roboto" :class="isOpen &&'is-open'">
-    <button type="button" class="btn-gnb-open"
-            v-show="!isOpen"
-            @click="isOpen=true">
-      <span class="off-grid">Menu Open</span></button>
+    <button type="button" class="btn-gnb-toggle"
+            :class="{'is-open' : isOpen}"
+            @click="toggleGnb">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="off-grid" v-if="isOpen">Menu Close</span>
+      <span class="off-grid" v-else>Menu Open</span>
+    </button>
     <div class="gnb-nav">
       <v-autoscroll-menu :generateItem="generateItem" class="gnb-menu">
       </v-autoscroll-menu>
     </div>
-    <button type="button" class="btn-gnb-close"
-            v-show="isOpen"
-            @click="isOpen=false">
-      <span class="off-grid">Menu Close</span>
-    </button>
   </nav>
 </template>
 <script>
   export default {
     name: 'gnb',
     props: {
-      sections: {type: Array}
+      sections: { type: Array }
     },
     data () {
       return {
         title: 'gnb',
-        isOpen: false,
-        scrollingElement: null,
-        koObj: {
-          label: '한국어',
-          value: 'ko'
-        },
-        enObj: {
-          label: 'English',
-          value: 'en'
-        }
+        isOpen: false
       }
     },
     methods: {
@@ -42,10 +33,11 @@
                   <span class="scroll-menu-icon"></span>
                   <span class="scroll-menu-text">${item.title}</span>`
       },
-      changeLang (data) {
-        this.$root.$emit('changeLang', data.value);
+      toggleGnb () {
+        this.isOpen = !this.isOpen;
       }
     },
-    created () {}
+    created () {
+    }
   }
 </script>

@@ -50,8 +50,11 @@
   svg {
     stroke: $great_color;
   }
-  &:hover {
-    animation: great-community 3s;
+  &.ani-on {
+    animation: great-community 2s 1;
+    &:hover {
+      animation-iteration-count: infinite;
+    }
   }
 }
 @keyframes great-community {
@@ -70,9 +73,9 @@
 $palette: #6cbf95, #51c0bf, #59add0, #7095e1, #9fa3e3, #c993d4, #db8db2, #f3becd;
 
 .list-enter-active, .list-leave-active {
-  transition: all 1s;
+  transition: all .8s ease-in;
 }
-.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+.list-enter, .list-leave-to {
   opacity: 0;
   transform: translateY(30px);
 }
@@ -105,6 +108,7 @@ $palette: #6cbf95, #51c0bf, #59add0, #7095e1, #9fa3e3, #c993d4, #db8db2, #f3becd
     }
   }
   .community-page {
+    flex: 1 1 auto;
     & > h4 {
       margin-left: -0.5em;
     }
@@ -116,6 +120,7 @@ $palette: #6cbf95, #51c0bf, #59add0, #7095e1, #9fa3e3, #c993d4, #db8db2, #f3becd
     }
   }
   & > a {
+    flex: 0 0 auto;
     text-align: center;
     color: rgba(#fff, 0.7);
     font-size: 12px;

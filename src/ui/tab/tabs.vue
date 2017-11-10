@@ -1,11 +1,12 @@
 <template>
   <div class="v-tab">
     <div class="v-tab-nav">
-      <ul>
-        <li class="v-tab-menu"
-            v-for="child in $children"
-            :class="{'is-active': child.isActive}">
-          <a href="#" @click.prevent="activeChild(child)">{{child.title}}</a>
+      <ul class="v-tab-menu">
+        <li class="v-tab-item"
+            v-for="child in items"
+            :class="{'is-active': child.isActive}"
+            :style="{'width': tabSize+'%'}">
+          <a class="v-tab-link" href="#" @click.prevent="activeChild(child)">{{child.title}}</a>
         </li>
       </ul>
     </div>
@@ -16,18 +17,29 @@
 </template>
 <script>
   export default {
+    props: {
+      maxWidth: {
+        default: 100,
+        type: Number
+      }
+    },
     data () {
-      return {}
+      return {
+        tabSize: 100,
+        items: []
+      }
     },
     methods: {
-      activeChild (child) {
-        this.$children.forEach(function (v) {
-          v.isActive = child === v
+      activeChild (v) {
+        this.items.forEach(function (child) {
+          child.isActive = child === v
         });
       }
     },
     mounted () {
-      this.activeChild(this.$children[0]);
+      this.items =this.$children;
+      this.activeChild(this.items[0]);
+      this.tabSize = 100 / this.items.length;
     }
   }
 </script>
