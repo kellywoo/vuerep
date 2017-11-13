@@ -1,8 +1,9 @@
 /*home*/
 .pg-home {
   position: fixed;
-  width: 100%;
   height: 100vh;
+  left: 0;
+  right: 0;
   .pg-align {
     height: inherit;
     background-color: transparent !important;

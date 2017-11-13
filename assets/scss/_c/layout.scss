@@ -4,9 +4,7 @@ html:lang(ko) {
 }
 
 .app-pad {
-  max-width: 1140px;
   padding: 0 #{$app_padding};
-  margin: 0 auto;
   position: relative;
 }
 
@@ -76,6 +74,8 @@ html:lang(ko) {
 
 /*page*/
 @mixin pg_align() {
+  max-width: 1140px;
+  margin: 0 auto;
   position: relative;
   background-color: #fff;
 }
