@@ -24,11 +24,6 @@
       title: {
         type: String
       }
-    },
-    mounted () {
-      this.$nextTick(() => {
-       // Confetti();
-      })
     }
   }
 </script>

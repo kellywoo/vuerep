@@ -8,11 +8,11 @@
       <v-autoscroll-section title="intro" :minHeight="'100vh'" :arrow="true">
         <page-home class="app-pad" title="intro"></page-home>
       </v-autoscroll-section>
-      <v-autoscroll-section title="Vue is" class="right">
+      <v-autoscroll-section title="VueIs" class="right">
         <page-about class="app-pad" title="Vue is"></page-about>
       </v-autoscroll-section>
-      <v-autoscroll-section title="Statistics" class="right">
-        <page-skills class="app-pad" title="Statistics"></page-skills>
+      <v-autoscroll-section title="WhyVue" class="right">
+        <page-skills class="app-pad" title="Why Vue"></page-skills>
       </v-autoscroll-section>
       <v-autoscroll-section title="Community" class="left">
         <page-work class="app-pad" title="Community"></page-work>

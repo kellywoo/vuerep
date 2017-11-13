@@ -161,7 +161,7 @@
       this.$parent.animateInit = () => {
         setTimeout(() => {
           this.slackStart = true;
-        }, 1500)
+        }, 1000)
       }
     },
     components: {

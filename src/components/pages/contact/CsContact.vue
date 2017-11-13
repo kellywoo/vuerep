@@ -2,9 +2,6 @@
     <form>
       <fieldset>
         <legend class="off-grid">Inquiry Form</legend>
-        <div class="envelope">
-          <div class="paper"></div>
-        </div>
         <div class="msg-box">
           <label class="form-line-box"
                  :class="{'is-filled': !!name}">
@@ -20,8 +17,8 @@
             <span class="form-label">Email<em class="sty-required" title="required" aria-label="required">*</em></span>
             <input class="input" type="text" maxlength="30"
                    v-validate="emailValidate"
-                   @keyup="checkValidate"
                    placeholder="required"
+                   @keyup="checkValidate"
                    name="email" v-model="email"/>
             <span class="form-icon img-thumbsup"></span>
           </label>
@@ -31,7 +28,6 @@
                  :class="{'is-filled': !!phone}">
             <span class="form-label">Phone</span>
             <input class="input" type="text" maxlength="20"
-                   placeholder="required"
                    name="phone" v-model="phone"/>
             <span class="form-icon img-thumbsup"></span>
           </label>
@@ -42,8 +38,8 @@
             <span class="form-label">Message<em class="sty-required" title="required" aria-label="required">*</em></span>
             <textarea class="textarea" maxlength="500"
                       v-validate="messageValidate"
-                      @keyup="checkValidate"
                       placeholder="Thank you for your words."
+                      @keyup="checkValidate"
                       name="message" v-model="message"></textarea>
             <span class="form-icon img-thumbsup"></span>
           </label>

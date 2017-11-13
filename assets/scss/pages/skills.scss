@@ -1,6 +1,37 @@
-
+.graph-title {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #5a5a5a;
+}
+.graph-item + .graph-item {
+  margin-top: 50px;
+}
 .bb-legend-item > text {
   font-size: 1rem !important;
+}
+.reference-list {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+}
+.reference-list > li {
+  flex: 1 1 auto;
+  width: 33.33%;
+  & > a {
+    height: 100%;
+  }
+}
+.reference-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 0.5em 1em;
+  margin: 0 10px;
+  text-align: center;
+  @include ghostBtn(transparent,#6cbf95);
 }
 @include mq-desktop {
   .pg-skills {
@@ -12,6 +43,18 @@
 }
 
 @include mq-tab {
-
+  .reference-list {
+    display: block;
+  }
+  .reference-list > li {
+    width: 100%;
+    flex: none;
+    & + li {
+      margin-top: 10px;
+    }
+  }
+  .reference-item {
+    border-radius: 0;
+  }
 }
 
