@@ -39,7 +39,7 @@
       },
       menuMove (item) {
         this.activeMenu(item);
-        scrollTo($.offset(item.$el).top, 2000)
+        scrollTo($.offset(item.$el).top, 500)
       },
       init (items) {
         let vm = this;

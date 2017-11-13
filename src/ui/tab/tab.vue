@@ -1,6 +1,6 @@
 <template>
   <transition name="tab">
-    <div class="v-tab-section" v-if="isActive">
+    <div class="v-tab-section" v-show="isActive">
       <slot></slot>
     </div>
   </transition>
@@ -63,7 +63,7 @@
     float: left;
     text-align: center;
     color: #587c9a;
-    $active_color: #f87c56;
+    $active_color: #266590;
     &.is-active{
       color: $active_color;
       &::after {

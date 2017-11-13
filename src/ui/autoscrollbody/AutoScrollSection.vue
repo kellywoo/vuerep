@@ -83,7 +83,7 @@
   .auto-section {
     position: relative;
     width: inherit;
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     align-items: center;
     justify-content: center;

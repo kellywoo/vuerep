@@ -130,11 +130,11 @@ function util () {
 export const $ = {
   util: util(),
   dom: function (el, parent) {
-    var $parent = document
+    var $parent = document;
     if (parent) {
-      $parent = typeof parent === 'string' ? document.querySelector(el) : el
-      el = parent
+      $parent = typeof parent === 'string' ? document.querySelector(parent) : parent
     }
+    console.log($parent);
     if (el === 'scrollingElement') {
       return document.scrollingElement ? document.scrollingElement : document.body
     } else {

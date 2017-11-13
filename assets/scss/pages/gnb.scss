@@ -12,26 +12,14 @@ $gnb_width: 200px;
   $menu_collapse_height: 9px;
 
   .gnb {
-    position: fixed;
+    position: absolute;
     right: 0;
-    left: 0;
+    left: 150px;
     top: 0;
     z-index: 100;
-
-    .gnb-lang {
-      position: absolute;
-      font-size: 13px;
-      top: 29px;
-      right: 20px;
-      color: #555;
-    }
-    .gnb-quick {
-      position: absolute;
-    }
-
     .gnb-nav {
       float: right;
-      margin-right: $app_padding;
+      margin-right: 20px;
     }
 
     /*scroll-menu*/
@@ -44,25 +32,29 @@ $gnb_width: 200px;
       text-align: left;
       display: block;
       margin-right: 0;
-      color: #fff;
+      color: rgb(213, 213, 213);
       padding: 0 15px;
       line-height: $app_header_height;
       border-top-right-radius: 5px;
       border-top-left-radius: 5px;
       font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       /*transform: rotate(20deg) translateX(1rem);*/
 
-      @for $i from 1 through 6 {
-        &.n-#{$i} {
-          color: nth($pg_color, $i);
-          &::after {
-            background-color: nth($pg_color, $i);
-          }
-        }
-      }
+      //@for $i from 1 through 6 {
+      //  &.n-#{$i}.is-active {
+      //    color: nth($pg_color, $i);
+      //    &::after {
+      //      background-color: nth($pg_color, $i);
+      //    }
+      //  }
+      //}
       &.is-active {
+        color: $main_color_green;
         &::after {
           content: ' ';
+          background-color: $main_color_green;
           display: block;
           margin-top: -3px;
           height: 3px;

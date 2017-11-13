@@ -1,68 +1,100 @@
 $interval: 10px;
 $mobile_interval: 7px;
 
-@mixin form_default() {
-  color: #555;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  padding: 0.5em 1.25em;
-  font-size: 0.875rem;
-  line-height: 1.5em;
-}
-
-@mixin form_mobile_default() {
-  color: #555;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  padding: 0.5em 0.8em;
-  font-size: mb-rem(26);
-  line-height: 1.75em;
-}
-
 @mixin getSpace($space) {
   margin: #{$space*2} #{ -1 * $space/2};
   padding-left: #{ $space/2};
   padding-right: #{ $space/2}
 }
-
-@include mq-desktop {
-
-  .form-box {
-    @include getSpace($interval);
-  }
-
-  .input {
-    width: 100%;
-    @include form_default;
-  }
-  .select {
-    width: 100%;
-    @include form_default;
-  }
-  .textarea {
-    resize: none;
-    width: 100%;
-    min-height: 4.5rem;
-    @include form_default;
+@mixin inputStyle(){
+  color: #555;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1.5em;
+  padding: 0.5em 1.5em;
+  border-radius: 1.5em;
+  border: 1px solid #ccc;
+  display: block;
+  &:focus {
+    border-color: $main_color_green;
+    background-color: rgba($main_color_green, 0.03);
   }
 }
-
-@include mq-tab {
-  .form-box {
-    @include getSpace($mobile_interval);
+.form-line-box {
+  display: block;
+  position: relative;
+  margin : 1.5em 0;
+  .form-label {
+    display: block;
+    margin-bottom: 5px;
+    height: 1em;
+    margin-top: -1em;
+    color: $main_color_green;
+    transition: transform .3s;
+    .sty-required {
+      color: #fa565a;
+      margin-left: 5px;
+    }
   }
   .input {
-    width: 100%;
-    @include form_mobile_default;
-  }
-  .select {
-    width: 100%;
-    @include form_mobile_default;
+    @include inputStyle();
+
   }
   .textarea {
-    resize: none;
-    width: 100%;
-    min-height: 100px;
-    @include form_mobile_default;
+    @include inputStyle();
+    outline: none;
+    border-radius: 5px;
+    min-height: 6em;
   }
+  .textarea:focus {
+    border: 2px solid $main_color_green;
+  }
+  .form-icon {
+    color: $main_color_green;
+    visibility: hidden;
+    position: absolute;
+    top: calc(50% - 5px);
+    right: 1em;
+  }
+  &.is-filled {
+    .form-label {
+      transform: scale(0.8);
+    }
+  }
+  &.is-passed {
+    .form-label {
+      transform: scale(0.8);
+    }
+    .form-icon {
+      visibility: visible;
+    }
+  }
+  .input:focus ~ .form-label {
+    transform: scale(0.8);
+    color: $main_color_green;
+  }
+  .form-active-line {
+    content: ' ';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    border-bottom: 2px solid $main_color_green;
+    transition: width 0.5s;
+  }
+
+  .img-thumbsup {
+    width: 1.5em;
+    height: 1.5em;
+    background: url('/assets/img/thumbsup.svg') center center no-repeat;
+  }
+  .input:focus + .form-active-line {
+    width: 100%;
+  }
+  & + .msg-deliver {
+    margin-top: -30px !important;
+    padding: 5px 0px 0px 0px !important;
+  }
+
+
 }

@@ -17,7 +17,8 @@
         items: [],
         buttons: [],
         len: 0,
-        current: 0
+        current: 0,
+        photostack: {}
       }
     },
     methods: {},
@@ -28,20 +29,31 @@
       this.$children.forEach((v, i) => {
         this.items.push(v.$el);
       });
-      new PhotoStack(this.$el, {
-        callback: function (item) {
-          console.log(item);
-        }
-      })
+      setTimeout(() => {
+        this.photostack = new PhotoStack(this.$el, {
+          callback: function (item) {
+            console.log(item);
+          }
+        })
+      },500)
+    },
+    beforeDestroy () {
+      console.log('beforedestroy',)
+      this.photostack._destroy();
     }
   }
 </script>
 <style lang="scss">
   .v-photostack {
     position: relative;
-    height: 380px;
-    background-color: #ddd;
     text-align: center;
+    padding-bottom: 50px;
+  }
+
+  .v-photostack-board {
+    background-color: #ddd;
+    position: relative;
+    height: 45vh;
     overflow: hidden;
     &::after {
       content: ' ';
@@ -51,25 +63,31 @@
       bottom: 0;
       right: 0;
       background-color: rgba(4,4,4,0.05);
-      box-shadow: 0 0 40px 8px rgba(0,0,0,0.8)
+      box-shadow: inset 0 0 40px 8px rgba(#266590,0.1)
     }
-  }
-
-  .v-photostack-board {
-    position: relative;
-    height: inherit;
   }
 
   .v-photostack-item {
     line-height: 0;
     position: absolute;
-    width: 33%;
-    padding: 10px 10px 30px;
+    width: 48%;
+    max-width: 400px;
+    padding: 10px 10px 10px;
     background-color: #f3f3f3;
     box-shadow: 0 2px 8px 0 rgba(0,0,0,0.12);
+    transition: transform 0.4s;
     img {
       width: 100%;
       vertical-align: top;
+    }
+    figcaption {
+      display: block;
+      line-height: 1;
+      font-size: 0.75rem;
+      margin-top: 10px;
+      color: #41b883;
+      text-align: right;
+      letter-spacing: 3px;
     }
     &[data-dummy] {
       padding: 20px 10px 20px;
@@ -91,7 +109,7 @@
   .photostack-btn {
     position: absolute;
     width: 100%;
-    bottom: 0px;
+    bottom: 5px;
     padding: 5px 0;
     z-index: 90;
     text-align: center;
@@ -111,7 +129,7 @@
       position: relative;
       display: inline-block;
       margin: 0 10px;
-      @include square(15px);
+      @include square(12px);
       cursor: pointer;
       background: #aaa;
       border-radius: 50%;
@@ -125,7 +143,7 @@
     }
 
     button.current {
-      background: #e6685e;
+      background: #a52a2d;
     }
 
     button.flippable::after {

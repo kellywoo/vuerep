@@ -1,10 +1,10 @@
 <template>
   <div class="app-page pg-home">
     <div class="pg-align">
-      <canvas class="home-visual" id="index_view"></canvas>
+      <!--<canvas class="home-visual" id="index_view"></canvas>-->
       <p class="pg-home-desc animated bounceInDown"><strong class="fc-m-green">3회</strong>를 맞이한 <strong class="fc-m-green">Vue컨퍼런스</strong>에 여러분의 후원을 요청합니다.</p>
       <h2 class="pg-home-title">
-        <img src="/assets/img/logo_3rd.png" class="flipInX animated" alt="Vue conference" />
+        <img src="/assets/img/vue-optimized.png" class="flipInX animated" alt="Vue conference" />
       </h2>
       <span class="animate-count f-roboto"></span>
     </div>
@@ -27,7 +27,7 @@
     },
     mounted () {
       this.$nextTick(() => {
-        Confetti();
+       // Confetti();
       })
     }
   }

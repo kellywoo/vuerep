@@ -1,6 +1,6 @@
 $main_color_green: rgba(65,184,131,1);
 $main_color_dark : #344a61;
-$pg_color : #d5d5d5 #ffc564 #f87c56 #46d1f0 #88b745 #3f46ae;
+$pg_color : rgb(65,184,131) #ffc564 #f87c56 #46d1f0 #88b745 #3f46ae;
 
 @mixin li-icons($n,$width,$name) {
   @for $i from 1 through $n {
@@ -25,11 +25,12 @@ $pg_color : #d5d5d5 #ffc564 #f87c56 #46d1f0 #88b745 #3f46ae;
 
 $desktop_minimum_width: 769px;
 $mobile_width: 450px;
-$app_padding: 40px;
-$app_mobile_padding: 1rem;
+$app_padding: 20px;
+$app_mobile_padding: 0rem;
 $app_header_height: 50px;
 $app_header_mobile_height: 50px;
 $easing_cubic: cubic-bezier(0.215, 0.610, 0.55, 1.000);
+$error_color: #f87c56;
 //n은 디자인 사이즈
 @function mb-px( $n ) {
   @return #{$n /(26/15)}px;
@@ -56,6 +57,17 @@ $easing_cubic: cubic-bezier(0.215, 0.610, 0.55, 1.000);
   @at-root {
     @media (max-width: #{$mobile_width}) {
       @content;
+    }
+  }
+}
+
+@include mq-tab {
+  html {
+    font-size: 15px;
+  }
+  @include mq-mobile {
+    html {
+      font-size: 13px;
     }
   }
 }

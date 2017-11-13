@@ -31,7 +31,7 @@
       generateItem (item) {
         return `
                   <span class="scroll-menu-icon"></span>
-                  <span class="scroll-menu-text">${item.title}</span>`
+                  <span class="scroll-menu-text f-roboto">${item.title}</span>`
       },
       toggleGnb () {
         this.isOpen = !this.isOpen;

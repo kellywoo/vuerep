@@ -4,64 +4,88 @@ import Vue from 'vue'
 import App from './App'
 import 'babel-polyfill'
 import UIComponent from '@/ui'
-import throttle from './util/throttle'
-import LangAbout from '@/components/pages/about/lang'
-import LangBlog from '@/components/pages/blog/lang'
-import LangContact from '@/components/pages/contact/lang'
-import LangHome from '@/components/pages/home/lang'
-import LangSkills from '@/components/pages/skills/lang'
-import LangWork from '@/components/pages/work/lang'
+import Throttle, { throttle } from './util/throttle'
+import VeeValidate, { Validator } from 'vee-validate'
+import Directives, { alignItemsArray } from '@/directive'
+Validator.extend('phone', {
+  getMessage: field => '',
+  validate: value => {
+    return new Promise(resolve => {
+      resolve({
+        valid: !!/^[\d-]+$/.exec(value)
+      })
+    })
+  }
+})
 
-function setLang (v) {
-  document.documentElement.lang = v;
-
+/*validate*/
+const enDict = {
+  attributes: {
+    email: 'email address'
+  },
+  messages: {
+    required: (field) => `${field} is required`,
+    email: () => 'This doesn\'t match email format',
+    phone: () => 'Only digits and \'-\' are acceptable.'
+  }
 }
-Vue.config.productionTip = false
-
-if (window.glObj.browser.support) {
-  Vue.use(UIComponent)
-  Vue.use(throttle)
-
-  var Lang = {
-    ko: {
-      about: LangAbout.$ko,
-      blog: LangBlog.$ko,
-      contact: LangContact.$ko,
-      home: LangHome.$ko,
-      skills: LangSkills.$ko,
-      work: LangWork.$ko
+const koDict = {
+  attributes: {
+    name: '이름',
+    email: '메일주소',
+    phone: '연락처',
+    message: '메세지'
+  },
+  messages: {
+    required: (field) => {
+      if ( field === '메세지' ) {
+        return '할 말씀이 없으시더라도 한마디만 해주세요 :)'
+      }
+      return `필수 항목인데 입력해주시면 안 될까요?`
     },
-    en: {
-      about: LangAbout.$en,
-      blog: LangBlog.$en,
-      contact: LangContact.$en,
-      home: LangHome.$en,
-      skills: LangSkills.$en,
-      work: LangWork.$en
+    email: () => '이메일 형식이 아니네요?',
+    phone: () => '연락처는 숫자만! 스토킹 용도 아니에요 ^^'
+  }
+}
+
+var windowResizeHandler = throttle(function () {
+  for ( var i in alignItemsArray ) {
+    if ( alignItemsArray[ i ].length ) {
+      let height = alignItemsArray[ i ].map(function (el) {
+        return [].slice.call(el.children).reduce(function (p, c) {
+          return p + c.offsetHeight;
+        }, 0);
+      }).sort((a, b) => {
+        return a < b;
+      })[0];
+      alignItemsArray[ i ].forEach(function (el) {
+        el.style.height = height + 'px';
+      })
     }
   }
-  /* eslint-disable no-new */
+},600);
 
-  setLang(window.glObj.lang);
+Vue.config.productionTip = false
+if ( window.glObj.browser.support ) {
+  Vue.directive('align', Directives[ 'align-height' ]);
+  window.addEventListener('resize', windowResizeHandler, false)
+
+  Vue.use(UIComponent)
+  Vue.use(Throttle)
+  Vue.use(VeeValidate, {
+    locale: 'ko',
+    dictionary: {
+      en: enDict,
+      ko: koDict
+    }
+  })
+
   new Vue({
     el: '#app',
-    data: {
-      'lang': window.glObj.lang,
-      'i18n': Lang
-    },
-    methods: {
-      changeBodyLang (l) {
-        setLang(l);
-      }
-    },
-    created () {
-      this.changeBodyLang(window.glObj.lang)
-    },
-    mounted () {
-      this.$root.$emit('changeLang', window.glObj.lang);
-      this.$root.$on('changeLang', this.changeBodyLang);
-    },
     template: '<App/>',
-    components: {App}
+    components: { App },
+    mounted () {
+      windowResizeHandler();
+    }
   })
 }

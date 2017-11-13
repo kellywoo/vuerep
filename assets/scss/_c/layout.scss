@@ -1,5 +1,6 @@
 html:lang(ko) {
   word-break: keep-all;
+
 }
 
 .app-pad {
@@ -37,6 +38,9 @@ html:lang(ko) {
   img {
     height: $app_header_height - 10px;
   }
+  span {
+    vertical-align: bottom;
+  }
 }
 
 
@@ -57,35 +61,85 @@ html:lang(ko) {
   }
 }
 
+.app-content {
+  overflow-x: hidden;
+}
+
+.app-footer {
+  background-color: #7c7d7e;
+  font-size: 0.875rem;
+  text-align: center;
+  padding: 10px;
+  color: #fff;
+
+}
+
+/*page*/
 @mixin pg_align() {
   position: relative;
   background-color: #fff;
-  box-shadow: 0 15px 35px rgba(50,50,93,.07), 0 5px 15px rgba(0,0,0,.1), inset 0 10px 20px rgba(0,0,0,.05);
 }
 
 @mixin pg_title () {
   text-align: center;
   color: #000;
-  &::after {
-    content: ' ';
-    background: linear-gradient(90deg, $main_color_green 0%, $main_color_dark 100%);
-    width: 7rem;
-    margin: 1rem auto 4rem;
-    display: block;
-    height: 3px;
-  }
+  //&::after {
+  //  content: ' ';
+  //  background: linear-gradient(90deg, $main_color_green 0%, $main_color_dark 100%);
+  //  width: 7rem;
+  //  margin: 1rem auto 4rem;
+  //  display: block;
+  //  height: 3px;
+  //}
 }
-.auto-section .app-page {
-  width: 100%;
-  padding-top: 12vh;
-  padding-bottom: 12vh;
+.pg-inner-title {
+  line-height: 1.4;
+  font-weight: bold;
+  margin-bottom: 3rem;
+  font-size: 1rem;
+  letter-spacing: 5px;
+}
+
+.pg-summary {
+  display: block;
+  font-size: 1.125rem;
+  width: 90%;
+  max-width: 700px;
+  color: $main_color_dark;
+  margin: 2rem auto 0;
+  position: relative;
+  text-align: center;
+  word-spacing: 5px;
+  letter-spacing: 2px;
+  line-height: 2;
+  font-weight: bold;
+}
+.pg-desc {
+  color: rgba(0,0,0,.84);
+  font-size: 0.875rem;
+  margin: 2rem auto 0;
+  line-height: 1.8;
+  text-align: center;
+  width: 90%;
+  max-width: 700px;
+}
+
+.pg-inner-group {
+  margin-bottom: 8rem;
 }
 
 @include mq-desktop {
-
+  .app-page {
+    width: 100%;
+    padding-bottom: 24vh;
+  }
   .pg-align {
     @include pg_align();
-    padding: 12vh 10vw 10vh;
+    padding: 12vh 4rem 10vh;
+
+    &.layout-apart {
+      box-shadow: 0 15px 35px rgba(50,50,93,.07), 0 5px 15px rgba(0,0,0,.1), inset 0 10px 20px rgba(0,0,0,.05);
+    }
   }
   .pg-title {
     @include pg_title();
@@ -93,54 +147,22 @@ html:lang(ko) {
     font-size: 3rem;
   }
 
-  .pg-summary {
-    display: block;
-    font-size: 1.250rem;
-    text-align: center;
-    width: 80%;
-    color: $main_color_dark;
-    margin: 2rem auto 0;
-  }
-
-  .pg-desc {
-    color: #696d6f;
-    font-size: 0.938rem;
-    margin-top: 2rem;
-    line-height: 1.8;
-    text-align: center;
-  }
-
   .pg-title + .pg-desc {
     margin-top: 4rem;
-  }
-
-  .pg-desc-left {
-    color: #696d6f;
-    font-size: 0.938rem;
-    margin-top: 2rem;
-    line-height: 1.8;
-    text-align: left;
   }
 
   .pg-inner-body {
     margin-top: 5rem;
   }
-
   .pg-inner-title {
-    color: #282e31;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
-  }
-  .btn-box {
-    margin-bottom: -30px;
+    text-align: center;
   }
 
 }
 
 @include mq-tab {
-  html {
-    font-size: 15px;
+  .app-page {
+    width: 100%;
   }
   .app-logo img {
     height: 40px;
@@ -148,12 +170,27 @@ html:lang(ko) {
   .m-br {
     display: block
   }
+
   .pg-align {
     @include pg_align();
-    padding: 4rem 3rem 3rem;
+    padding: 4rem 2.5rem 3rem;
+
     @include mq-mobile {
       .pg-align {
         padding: 3rem 2rem 3rem;
+      }
+    }
+    &.layout-apart {
+      &::after {
+        opacity: 0.3;
+        content: ' ';
+        background: linear-gradient(90deg, $main_color_green 0%, $main_color_dark 100%);;
+        display: block;
+        position: absolute;
+        width: 80%;
+        height: 1px;
+        bottom: 0;
+        left: 10%;
       }
     }
   }
@@ -167,33 +204,8 @@ html:lang(ko) {
     line-height: 1;
   }
 
-  .pg-summary {
-    display: block;
-    font-size:  mb-rem(28);
-    text-align: center;
-    margin: 20px auto 0;
-  }
-
-  .pg-desc {
-    color: #696d6f;
-    font-size: mb-rem(26);
-    margin-top: 20px;
-    line-height: 1.8;
-    text-align: center;
-  }
-
   .pg-inner-body {
     margin-top: 34px;
-  }
-
-  .pg-inner-title {
-    color: #282e31;
-    font-size: mb-rem(30);
-    font-weight: bold;
-    margin-bottom: 16px;
-  }
-  .btn-box {
-    margin-bottom: -30px;
   }
 
 }

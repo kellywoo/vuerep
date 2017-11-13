@@ -14,7 +14,7 @@
  *
  * @return {Function}  A new, throttled, function.
  */
-function throttle (callback, noTrailing, delay, debounceMode) {
+function _throttle (callback, noTrailing, delay, debounceMode) {
   // After wrapper has stopped being called, this timeout ensures that
   // `callback` is executed at the proper times in `throttle` and `end`
   // debounce modes.
@@ -84,9 +84,9 @@ function throttle (callback, noTrailing, delay, debounceMode) {
   return wrapper
 
 }
-
+export const throttle = _throttle
 export default {
   install (Vue, params) {
-    Vue.prototype.$throttle = throttle;
+    Vue.prototype.$throttle = _throttle;
   }
 }

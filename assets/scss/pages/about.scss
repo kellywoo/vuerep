@@ -2,35 +2,15 @@
   padding-top: 0 !important;
 }
 
-.about-launch {
+.about-vue {
   margin-top: 3rem;
+  margin-left: -20px;
+  margin-right: -20px;
+  & > li {
+    padding: 0 10px;
+
+  }
   .img-box {
-    border: 5px solid #ffc564;
-    margin: 0 auto;
-    @include square(120px);
-    border-radius: 50%;
-    overflow: hidden;
-    background-color: #0f0f0f;
-    text-align: center;
-    transition: transform .3s;
-    transform: scale(1);
-    &:hover {
-      transform: scale(1.1);
-      box-shadow: 0 15px 35px rgba(50, 50, 93, 0.2), 0 5px 15px rgba(0, 0, 0, 0.1);
-      .i-result {
-        animation-name: fadeInUpBig;
-        animation-iteration-count: 1;
-        animation-duration: 0.3s;
-        animation-fill-mode: forwards;
-      }
-    }
-    & > img {
-      width: 100%;
-    }
-    &.txt-box {
-      color: #fff;
-      padding-top: 32px;
-    }
     .i-result {
       display: inline-block;
       margin-top: 0.3em;
@@ -40,32 +20,122 @@
   }
 }
 
-.about-launch-desc {
-  & > dt {
+.about-vue-fact {
+  $vue_fact_height: 150px;
+
+  & > dd {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    color: #fff;
     text-align: center;
-    margin-bottom: 3rem;
-    color: #459db2;
-    font-weight: 600;
+    transition: transform .3s;
+    transform: scale(1);
+    box-shadow: 0 2px 35px rgba(50, 50, 93, 0.1);
+    margin-bottom: 30px;
+    &::before {
+      content: ' ';
+      display: block;
+      height: $vue_fact_height;
+    }
+    &::after {
+      content: ' ';
+      position: absolute;
+      width: 100%;
+      display: block;
+      top: 0;
+      height: $vue_fact_height;
+      box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    &.n-1::before {
+      background: url('/assets/img/stats.png') center center no-repeat;
+      background-size: contain;
+    }
+    &.n-2::before {
+      background: url('/assets/img/evanyou.jpeg') right -50px no-repeat;
+      background-size: 100% auto;
+    }
+    &.n-3::before {
+      background: url('/assets/img/vue_conf_2.png') top center no-repeat;
+      background-size: cover;
+    }
   }
 }
 
-.about-launch-more {
+.vue-fact-link {
+  text-align: center;
+  margin-top: 2rem;
+  display: block;
+  padding: 0 16px;
+  line-height: 32px;
+  border-radius: 16px;
+  @include ghostBtn(transparent, $main_color_green);
+}
+
+.vue-fact-desc {
+  padding: 20px 15px 20px 20px;
+  text-align: left;
+  color: #050505;
+  line-height: 1.8;
+  font-size: 0.8rem;
+  & > strong {
+    color: #459db2;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+}
+
+.about-vue-more {
   margin-top: 5rem;
   text-align: center;
 }
 
-.btn-more-launch {
-  display: inline-block;
-  padding: 1rem 2rem;
-  margin: 0 auto;
-  border-radius: 3px;
-  @include ghostBtn(transparent, $main_color_green);
-}
-
 @include mq-desktop {
+  .about-vue-fact {
+    & > dt {
+      text-align: center;
+      margin: 2rem 0 1.5rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+    & > dd {
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 15px 35px rgba(50, 50, 93, 0.2), 0 5px 15px rgba(0, 0, 0, 0.1);
 
+        &::after {
+          background-color: rgba(0, 0, 0, 0.05)
+        }
+      }
+    }
+  }
 }
 
 @include mq-tab {
-
+  .pg-about::before {
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 1px;
+    box-shadow: 0 5px 30px 1px rgba(0, 0, 0, .2);
+    z-index: 1;
+  }
+  .about-vue > li {
+    width: 100%;
+  }
+  .about-vue-fact > dt {
+    text-indent: 10px;
+    border-left: 3px solid #459db2;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+  }
+  .vue-fact-link {
+    max-width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

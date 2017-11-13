@@ -8,11 +8,28 @@
  * Copyright 2014, Codrops
  * http://www.codrops.com
  */
+/* Modernizr 2.7.1 (Custom Build) | MIT & BSD
+ * Build: http://modernizr.com/download/#-csstransitions-touch-shiv-cssclasses-prefixed-teststyles-testprop-testallprops-prefixes-domprefixes-load
+ */
+
+import { $ } from '@/util/util'
 export default (function () {
 
-
-  var transEndEventName = 'transitionend';
   'use strict';
+
+  var classie = {
+    hasClass (el, cl) {
+      return el.classList.contains(cl);
+    },
+    addClass (el, cl) {
+      el.classList.add(cl)
+    },
+    removeClass (el, cl) {
+      el.classList.remove(cl)
+    }
+  }
+  var transEndEventName = 'transitionend';
+  var eventGroups = [];
   function extend (a, b) {
     for ( var key in b ) {
       if ( b.hasOwnProperty(key) ) {
@@ -54,18 +71,6 @@ export default (function () {
       array[ i ] = t;
     }
     return array;
-  }
-
-  var classie = {
-    hasClass (el, cl) {
-      return el.classList.contains(cl);
-    },
-    addClass (el, cl) {
-      el.classList.add(cl)
-    },
-    removeClass (el, cl) {
-      el.classList.remove(cl)
-    }
   }
 
   function Photostack (el, options) {
@@ -111,6 +116,7 @@ export default (function () {
       open = function () {
         var setTransition = function () {
           classie.addClass(self.el, 'photostack-transition');
+
         }
         if ( beforeStep ) {
           this.removeEventListener('click', open);
@@ -127,14 +133,14 @@ export default (function () {
 
     if ( beforeStep ) {
       this._shuffle();
-      this.el.addEventListener('click', open);
+      eventGroups.push ($.addEventHandler(this.el,'click', open));
     }
     else {
       open();
     }
+
     this.navDots.forEach(function (dot, idx) {
-      dot.addEventListener('click', function () {
-        console.log('dot clicked', idx, self.current);
+      eventGroups.push ($.addEventHandler(dot,'click', function () {
         // rotate the photo if clicking on the current dot
         if ( idx === self.current ) {
           self._rotateItem();
@@ -151,16 +157,20 @@ export default (function () {
             callback();
           }
         }
-      });
+      }));
     });
-    window.addEventListener('resize', function () {
-      self._resizeHandler();
-    });
-  }
 
+    eventGroups.push ($.addEventHandler(window,'resize', function () {
+      self._resizeHandler();
+    }));
+  }
+  Photostack.prototype._destroy = function () {
+    eventGroups.forEach(function(v){
+      v();
+    })
+  }
   Photostack.prototype._resizeHandler = function () {
     var self = this;
-
     function delayed () {
       self._resize();
       self._resizeTimeout = null;
@@ -186,11 +196,11 @@ export default (function () {
   }
 
   Photostack.prototype._showPhoto = function (pos) {
-    console.log(pos,this.isShuffling);
     if ( this.isShuffling ) {
       return false;
     }
     this.isShuffling = true;
+
     // if there is something behind..
     if ( classie.hasClass(this.currentItem, 'photostack-flip') ) {
       this._removeItemPerspective();
@@ -228,7 +238,8 @@ export default (function () {
       this.openDefault = false;
       this.isShuffling = false;
     }
-    var overlapFactor = .5,
+
+    var overlapFactor = .8,
       // lines & columns
       lines = Math.ceil(this.sizes.inner.width / (this.sizes.item.width * overlapFactor)),
       columns = Math.ceil(this.sizes.inner.height / (this.sizes.item.height * overlapFactor)),
@@ -294,15 +305,11 @@ export default (function () {
             translation = { x: gridVal.x, y: gridVal.y },
             onEndTransitionFn = function () {
               ++cntItemsAnim;
-              this.removeEventListener(transEndEventName, onEndTransitionFn);
-
               if ( cntItemsAnim === self.allItemsCount ) {
                 if ( iter > 0 ) {
-                  console.log('moveItems', iter)
                   moveItems.call();
                 }
                 else {
-                  console.log('hello,common')
                   // change transform-origin
                   classie.addClass(self.currentItem, 'photostack-flip');
                   // all done..
@@ -329,13 +336,11 @@ export default (function () {
             item.style.msTransform = 'translate(' + translation.x + 'px,' + translation.y + 'px) rotate(' + Math.floor(Math.random() * (maxrot - minrot + 1) + minrot) + 'deg)';
             item.style.transform = 'translate(' + translation.x + 'px,' + translation.y + 'px) rotate(' + Math.floor(Math.random() * (maxrot - minrot + 1) + minrot) + 'deg)';
           }
-
           if ( self.started ) {
-            item.addEventListener(transEndEventName, onEndTransitionFn);
+           onEndTransitionFn();
           }
         });
       };
-
     moveItems.call();
   }
 
@@ -344,6 +349,7 @@ export default (function () {
       inner: { width: this.inner.offsetWidth, height: this.inner.offsetHeight },
       item: { width: this.currentItem.offsetWidth, height: this.currentItem.offsetHeight }
     };
+
     // translation values to center an item
     this.centerItem = {
       x: this.sizes.inner.width / 2 - this.sizes.item.width / 2,
@@ -389,13 +395,11 @@ export default (function () {
     classie.removeClass(this.currentItem, 'photostack-flip');
   }
 
-
   Photostack.prototype._rotateItem = function (callback) {
     if ( classie.hasClass(this.el, 'photostack-perspective') && !this.isRotating && !this.isShuffling ) {
       this.isRotating = true;
 
       var self = this, onEndTransitionFn = function () {
-        this.removeEventListener(transEndEventName, onEndTransitionFn);
         self.isRotating = false;
         if ( typeof callback === 'function' ) {
           callback();
@@ -404,24 +408,22 @@ export default (function () {
 
       if ( this.flipped ) {
         classie.removeClass(this.navDots[ this.current ], 'flip');
-        this.currentItem.style.WebkitTransform = 'translate(' + this.centerItem.x + 'px,' + this.centerItem.y + 'px) rotateY(0deg)';
-        this.currentItem.style.transform = 'translate(' + this.centerItem.x + 'px,' + this.centerItem.y + 'px) rotateY(0deg)';
-
+          this.currentItem.style.WebkitTransform = 'translate(' + this.centerItem.x + 'px,' + this.centerItem.y + 'px) rotateY(0deg)';
+          this.currentItem.style.transform = 'translate(' + this.centerItem.x + 'px,' + this.centerItem.y + 'px) rotateY(0deg)';
       }
       else {
         classie.addClass(this.navDots[ this.current ], 'flip');
-        this.currentItem.style.WebkitTransform = 'translate(' + this.centerItem.x + 'px,' + this.centerItem.y + 'px) translate(' + this.sizes.item.width + 'px) rotateY(-179.9deg)';
-        this.currentItem.style.transform = 'translate(' + this.centerItem.x + 'px,' + this.centerItem.y + 'px) translate(' + this.sizes.item.width + 'px) rotateY(-179.9deg)';
-
+          this.currentItem.style.WebkitTransform = 'translate(' + this.centerItem.x + 'px,' + this.centerItem.y + 'px) translate(' + this.sizes.item.width + 'px) rotateY(-179.9deg)';
+          this.currentItem.style.transform = 'translate(' + this.centerItem.x + 'px,' + this.centerItem.y + 'px) translate(' + this.sizes.item.width + 'px) rotateY(-179.9deg)';
       }
 
       this.flipped = !this.flipped;
-      console.log('rotateItem')
-      this.currentItem.addEventListener(transEndEventName, onEndTransitionFn);
+
+      onEndTransitionFn();
+
     }
   }
 
-// add to global namespace
+  // add to global namespace
   return Photostack;
-
 })()

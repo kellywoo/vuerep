@@ -1,16 +1,41 @@
 .pg-contact {
-  background-color: #1b1e21;
+  .btn-box {
+    margin-top: 30px;
+  }
 }
-
 .contact-form {
-  max-width: 830px;
-  margin: 70px auto 90px;
+  max-width: 500px;
+  margin: 100px auto ;
   padding: 0 #{$app_padding};
 }
 .contact-advise {
   color: #818283;
   margin-top: 2rem;
 }
+
+.contact-sent {
+  color: $main_color_green;
+  padding: 2rem;
+  border: 1px solid $main_color_green;
+  border-radius: 5px;
+  margin-bottom: 50px;
+  text-align: center;
+  font-size: 1.125rem;
+  .contact-success {
+    margin-bottom: 1rem;
+    margin-top: 40px;
+  }
+}
+
+.contact-more-info {
+  text-align: center;
+  & > li {
+  }
+  & > li + li {
+    margin-top: 0.3rem;
+  }
+}
+
 .btn-submit {
   width: 100%;
   background-color: #6772e5;
@@ -20,30 +45,113 @@
   height: 47px;
 }
 
-.footer {
-  color: #7c7d7e;
-  font-size: 0.875rem;
-  text-align: center;
-  padding-bottom: 3rem;
+
+
+.envelope {
+  position: relative;
+  margin: 50px auto 0;
+  width: 98px;
+  height: 66px;
+  background: #c94548;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 0 1px #c94548 inset;
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 0 solid transparent;
+    border-width: 33px 49px;
+  }
+  &::before {
+    border-bottom-color: #c94548;
+    top: -100%;
+    left: 0;
+  }
+  &::after {
+    border-right-color: #ed4c50;
+    border-left-color: #fa565a;
+    border-bottom-color: #fa565a;
+    top: 0;
+    left: 0;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.25);
+  }
+}
+
+.paper {
+  background: #fff;
+  width: 87px;
+  height: 66px;
+  margin: 0 auto;
+  border-radius: 5px;
+  position: absolute;
+  left: 6px;
+  top: -33px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 12px;
+    background: #e3f1fc;
+    height: 4px;
+    border-radius: 5px;
+  }
+  &::before {
+    top: 14px;
+    width: 31px;
+  }
+  &::after {
+    right: 12px;
+    top: 28px;
+    box-shadow:
+      0 8px 0 #e3f1fc,
+      0 16px 0 #e3f1fc,
+      0 24px 0 #e3f1fc
+  }
+}
+
+.envelope.is-enclosed {
+
+  .paper {
+    animation: paper 5s infinite;
+  }
+  &::before {
+    //z-index: 1;
+    transform-origin: center bottom;
+    animation: envelope 5s infinite;
+  }
+}
+
+@keyframes paper {
+  0% {top: 0}
+  10% {top: -33px}
+  35% {top: 0}
+  100% {top: 0}
+}
+@keyframes envelope {
+  0% {
+    transform: rotateX(0);
+    z-index: inherit;
+  }
+  40% {
+    transform: rotateX(0);
+    z-index: inherit;
+  }
+  60% {
+    transform: rotateX(-180deg);
+    z-index: 1;
+  }
+  100% {
+    z-index: 1;
+    transform: rotateX(-180deg);
+  }
 }
 
 
 @include mq-desktop {
-  .contact-info {
-    color: #fff;
-    & > dt {
-      float: left;
-      width: 50%;
-       & > span {
-         margin-top: 0.5rem;
-       }
-    }
-    & > dd {
-      width:50%;
-      float: right;
-      margin-bottom: 0.3rem;
-    }
-  }
 }
 
 @include mq-tab {
@@ -53,20 +161,9 @@
   }
 
   .contact-form {
-    padding: 0 #{$app_mobile_padding};
+    padding: 0 20px;
     margin: 40px auto 30px;
     max-width: 600px;
-  }
-
-  .contact-info {
-    color: rgba(255,255,255,0.7);
-    font-size: mb-rem(22);
-    & > dt > span {
-      margin:0.5rem 0 1rem;
-    }
-    & > dd + dd {
-      margin-top: 0.3rem;
-    }
   }
 
   .btn-submit {

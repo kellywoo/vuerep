@@ -1,5 +1,5 @@
 import { requestAniFrame } from '@/util/util';
-const requestAnimationFrame = requestAniFrame(5);
+const requestAnimationFrame = requestAniFrame(20);
 
 export default function () {
   let confetties, i,
@@ -7,13 +7,14 @@ export default function () {
     h = 0,
     w = 0,
     PI_2 = 2 * Math.PI;
-  const NUM_CONFETTI = 40,
+  const NUM_CONFETTI = 30,
     COLORS = [
-      [ 235, 90, 70 ],
-      [ 97, 189, 79 ],
-      [ 242, 214, 0 ],
-      [ 0, 121, 191 ],
-      [ 195, 119, 224 ]
+      [ 81, 192, 191 ],
+      [ 89, 173, 208],
+      [ 112, 149, 225],
+      // [ 65, 184, 131 ],
+      [ 159, 163, 227 ],
+      [ 243, 190, 205]
     ],
     canvas = document.getElementById('index_view'),
     context = canvas.getContext('2d');

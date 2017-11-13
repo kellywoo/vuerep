@@ -31,9 +31,11 @@
     },
     methods: {
       activeChild (v) {
-        this.items.forEach(function (child) {
-          child.isActive = child === v
+        let num = 0
+        this.items.forEach(function (child, i) {
+          num = (child.isActive = child === v) ? i: num;
         });
+        this.$emit('changed', num)
       }
     },
     mounted () {

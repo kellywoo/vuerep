@@ -1,8 +1,25 @@
 
 $pad: 112px;
 
+.vuetiful-third {
+  margin-bottom: 7rem;
+  & > dt {
+    line-height: 1.4;
+    font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: 5px;
+  }
+  & > dd {
+    text-align: center;
+    margin: 1rem 0 3rem;
+    font-size: 2rem;
+    letter-spacing: 0.25em;
+  }
+}
 .vuetiful-history {
-
+  font-size: 1rem;
+  margin: 5rem auto 0;
+  max-width: 700px;
   & > li {
     float: left;
     width: 50%;
@@ -10,6 +27,7 @@ $pad: 112px;
 }
 
 .vuetiful-desc {
+  margin-top: 30px;
   $pad: 10px;
   & > dt {
     float: left;
@@ -76,11 +94,10 @@ $pad: 112px;
 
 
 @include mq-desktop {
-  .vuetiful-pics {
-    img {
-    }
-  }
 
+  .app-page.pg-blog {
+    padding-top: 0;
+  }
 }
 
 @include mq-tab {

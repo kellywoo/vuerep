@@ -1,9 +1,9 @@
 <template>
-  <div class="msg-box">
+  <div class="msg-box" :class="{'is-error': isError, 'is-help': isHelp, 'is-warn': isWarn}">
     <slot></slot>
-    <div class="msg-deliver" :class="{'with-btn': btn}" v-show="show">
+    <div class="msg-deliver" :class="{'with-btn': btn}">
       <div class="msg-content" v-html="msg"></div>
-      <button class="btn-hide-msg" type="button" aria-label="hide message" @click="hide">X</button>
+      <button v-if="btn" class="btn-hide-msg" type="button f-roboto" aria-label="hide message" @click="hide">x</button>
     </div>
   </div>
 </template>
@@ -12,12 +12,13 @@
     name: 'msg-box',
     props: {
       msg: '',
-      show: {
-        type: Boolean
-      },
       btn: {
-        type: Boolean
-      }
+        type: Boolean,
+        default: false
+      },
+      isError: {},
+      isHelp: {},
+      isWarn: {}
     },
     methods: {
       hide () {
@@ -34,16 +35,16 @@
       border-radius: 5px;
       margin-top: 5px;
       position: relative;
-
+      font-size: 0.75rem;
       &.with-btn {
         padding: 10px 25px 10px 15px;
       }
     }
     &.is-info .msg-deliver {
       background-color: rgba(#f1f1f1, 0.8);
-      color: #d5d5d5;
+      color: #f87c56;
       .btn-hide-msg {
-        color: #d5d5d5;
+        color: #f87c56;
       }
     }
     &.is-help .msg-deliver {
@@ -54,25 +55,18 @@
       background-color: rgba(#f0ad4e, 0.8);
       color: $color;
     }
-    &.is-gentle-error .msg-deliver {
-      background-color: #f2dede;
-      border: 1px solid #b33b21;
-      color: #b33b21
-    }
     &.is-error .msg-deliver {
-      background-color: rgba(#d14836, 0.8);
-      color: $color;
     }
     &.is-done .msg-deliver {
       background-color: rgba(#51a351, 0.8);
       color: $color;
     }
     .btn-hide-msg {
-      font-size: 0.8em;
       position: absolute;
       color: inherit;
-      top: 12px;
-      right: 12px;
+      top: 2px;
+      right: 2px;
+      padding: 10px;
     }
   }
 </style>

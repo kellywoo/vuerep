@@ -16,6 +16,19 @@
 .fc-m-green {
   color: $main_color_green;
 }
+
+.f-u {
+  text-decoration: underline;
+}
+.f-hu {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.f-nu {
+  text-decoration: none;
+}
 /*align*/
 html .txt-l {
   text-align: left
@@ -162,6 +175,9 @@ html .v-base {
   .no-before::before,
   .no-after::after {
     content: none;
+  }
+  .bg-fff {
+    background-color: #fff;
   }
 }
 
