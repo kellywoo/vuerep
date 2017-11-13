@@ -5,10 +5,10 @@
         <div class="vuetiful-pics">
           <v-slider v-if="display===0">
             <v-slider-item v-for="i in 6" :key="i" data-dummy>
-              <img src="/assets/img/logo_round.png" alt="vue 사진" />
+              <img src="/vue/assets/img/logo_round.png" alt="vue 사진" />
             </v-slider-item>
             <v-slider-item v-for="i in 5" :key="i">
-              <img :src="'/assets/img/1st/meetup_'+i+'.jpg'" alt="첫번째 meetup 사진" />
+              <img :src="'/vue/assets/img/1st/meetup_'+i+'.jpg'" alt="첫번째 meetup 사진" />
               <figcaption>1회 뷰티풀 코리아</figcaption>
             </v-slider-item>
           </v-slider>
@@ -24,7 +24,7 @@
           <dd>
             <ul class="presenter-list">
               <li v-for="(name, i) in first" :key="i">
-                <img :src="'/assets/img/1st/'+(i+1)+'.jpg'" :title="name" alt="발표자 사진" />
+                <img :src="'/vue/assets/img/1st/'+(i+1)+'.jpg'" :title="name" alt="발표자 사진" />
               </li>
             </ul>
           </dd>
@@ -37,10 +37,10 @@
         <div class="vuetiful-pics">
           <v-slider v-if="display===1">
             <v-slider-item v-for="i in 6" :key="i" data-dummy>
-              <img src="/assets/img/logo_round.png" alt="vue 사진" />
+              <img src="/vue/assets/img/logo_round.png" alt="vue 사진" />
             </v-slider-item>
             <v-slider-item v-for="i in 5" :key="i">
-              <img :src="'/assets/img/2nd/meetup_'+i+'.jpg'" alt="두번째 meetup 사진" />
+              <img :src="'/vue/assets/img/2nd/meetup_'+i+'.jpg'" alt="두번째 meetup 사진" />
               <figcaption>2회 뷰티풀 코리아</figcaption>
             </v-slider-item>
           </v-slider>
@@ -56,7 +56,7 @@
           <dd>
             <ul class="presenter-list">
               <li v-for="(name, i) in second" :key="i">
-                <img :src="'/assets/img/2nd/'+(i+1)+'.jpg'" :title="name" alt="발표자 사진" />
+                <img :src="'/vue/assets/img/2nd/'+(i+1)+'.jpg'" :title="name" alt="발표자 사진" />
               </li>
             </ul></dd>
           <dt>발표자료</dt>

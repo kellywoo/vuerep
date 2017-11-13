@@ -30,7 +30,7 @@
   </div>
 </template>
 <script>
-  import '/assets/scss/index.scss'
+  import '/vue/assets/scss/index.scss'
   import Gnb from '@/components/gnb/Gnb'
   import Home from '@/components/pages/home/Home'
   import About from '@/components/pages/about/About'

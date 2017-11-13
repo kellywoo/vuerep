@@ -70,7 +70,7 @@
   </div>
 </template>
 <script>
-  import { bb, d3 } from '/nm/billboard.js/src/core.js'
+  import { bb, d3 } from '@/util/billboard/core.js'
 
   const $http = require('axios')
 
