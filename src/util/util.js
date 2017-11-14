@@ -134,7 +134,6 @@ export const $ = {
     if (parent) {
       $parent = typeof parent === 'string' ? document.querySelector(parent) : parent
     }
-    console.log($parent);
     if (el === 'scrollingElement') {
       return document.scrollingElement ? document.scrollingElement : document.body
     } else {

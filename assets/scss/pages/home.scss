@@ -17,13 +17,14 @@
 }
 
 .client.is-fixed .pg-home {
-  .pg-align{
-    visibility: hidden;
+  .pg-home-desc {
+    opacity: 0.5;
   }
-  background: url('/vue/assets/img/vue-optimized.png') center center no-repeat;
-  background-size: contain;
-  opacity: 0.5
+  .pg-home-title {
 
+    visibility: hidden;
+
+  }
 }
 .home-visual {
   position: absolute;
@@ -33,13 +34,13 @@
   height: 100%;
 }
 
-.pg-home-title {
+.pg-home-desc {
   position: relative;
   line-height: 1.15em;
   color: #efaf4d;
   text-align: center;
   letter-spacing: -5px;
-  padding: 4rem 0 0;
+  padding: 0 0 0;
   text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
   width: 100%;
   img {
@@ -48,13 +49,13 @@
   }
 }
 
-.pg-home-desc {
-  font-size: 1.25rem;
-  color: rgba(53, 73, 94, 0.8);
+.pg-home-title {
+  font-size: 3.25rem;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   line-height: 2;
   width: 100%;
+  margin-top: 2rem;
 }
 
 /*home*/
@@ -65,7 +66,7 @@
       padding-top: 8vh;
     }
   }
-  .pg-home-desc {
+  .pg-home-title {
     font-weight: bold;
   }
 
@@ -79,7 +80,7 @@
   .auto-section:nth-child(1) {
     min-height: 100vh !important;
   }
-  .pg-home-title {
+  .pg-home-desc {
     font-size: 13vw;
     letter-spacing: -1px;
     font-weight: 500;

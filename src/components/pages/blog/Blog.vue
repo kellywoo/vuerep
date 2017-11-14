@@ -4,9 +4,10 @@
       <div class="pg-inner-head">
         <h2 class="pg-title">{{title}}</h2>
         <p class="pg-summary">뷰티풀 코리아는<br/><strong class="fc-m-green">3번째 이야기를 준비</strong>하고 있습니다.</p>
-        <p class="pg-desc">많은 분들의 격려와 성원에 힘입어 1,2 회를 성공적으로 끝내고<br/>
-          많은 아쉬움이 남았습니다.
-          Vue는 러닝커브가 낮은 프론트엔드 개발자 분들 뿐 아니라 Vue에 관심을 가져주시는 디자이너분들, 퍼블리셔 분들 그리고 백엔드 개발자분들까지 많은 관심을 가져주시고 이 분들마다 가지고 있는 질문이 다릅니다. 하루에도 몇번씩 올라오는 slack의 질문들을 보며 더 자세한 내용들을 밋업에서 다루고 그 정보를 함께 나눈다면 더 의미있는 일이 될거라고 생각했습니다.<br/>
+        <p class="pg-desc">많은 분들의 격려와 성원에 힘입어 1,2 회를 성공적으로 끝내고
+          많은 아쉬움이 남았습니다.<br />
+          Vue는 프론트엔드 개발자분들 뿐 아니라 디자이너분, 퍼블리셔분 백엔드 개발자분들까지<br/>다양한 영역의 관심을 받고 있으며 다양한 시선의 질문이 오갑니다.
+          <br/>이런 내용들을 함께 다루고 나눈다면 더 의미있는 일이라고 생각합니다.<br/>
         </p>
       </div>
       <div class="pg-inner-body">
@@ -22,13 +23,30 @@
           <div class="pg-inner-group">
             <dl class="vuetiful-third">
               <dt>날짜는?</dt>
-              <dd>2012.12.01</dd>
+              <dd>2012.12.01<span>(Fri)</span></dd>
               <dt>장소는?</dt>
-              <dd>Dcamp 다목적 홀</dd>
+              <dd>Dcamp 다목적 홀<br /><button type="button" class="tgg-location icon-location" @click="showLocation = !showLocation">지도보기</button>
+                <location class="vuetiful-location"
+                          v-show="showLocation" :showMap="showLocation"></location></dd>
               <dt>참여자는?</dt>
               <dd>100명 내 외</dd>
               <dt>발표주제?</dt>
               <dd>Digging Deep Vue</dd>
+              <dt>스케쥴은?</dt>
+              <dd>
+                <div class="vuetiful-schedule">
+                  <dl><dt>7:00</dt><dd>시작</dd></dl>
+                  <dl><dt>7:00-7:20</dt><dd>발표1</dd></dl>
+                  <dl><dt>7:20-7:30</dt><dd>스폰서 채용광고 및 break</dd></dl>
+                  <dl><dt>7:30-7:50</dt><dd>발표2</dd></dl>
+                  <dl><dt>7:50-8:00</dt><dd>스폰서 채용광고 및 break</dd></dl>
+                  <dl><dt>8:00-8:20</dt><dd>발표3</dd></dl>
+                  <dl><dt>8:20-8:30</dt><dd>스폰서 채용광고 및 break</dd></dl>
+                  <dl><dt>8:30-9:20</dt><dd>Q&A 및 레크리에이션</dd></dl>
+                  <dl><dt>9:20-9:50</dt><dd>네트워킹</dd></dl>
+                  <dl><dt>9:50-10:00</dt><dd>정리</dd></dl>
+                </div>
+              </dd>
               <dt>1,2회가 궁금해?</dt>
               <dd>
                 <history></history>
@@ -42,6 +60,7 @@
 </template>
 <script>
   import History from './History.vue'
+  import Location from './locationMap'
   export default {
     name: 'blog',
     props: {
@@ -51,11 +70,12 @@
     },
     data () {
       return {
-        language: 'blog'
+        showLocation: false
       }
     },
     components: {
-      history: History
+      history: History,
+      location: Location
     }
   }
 </script>
@@ -74,7 +94,7 @@
       line-height: 1.8;
       letter-spacing: 10px;
       &::before {
-        content: '그';
+        content: '그래서 3회l!!';
         white-space: nowrap;
         animation: textshow 3s infinite;
       }

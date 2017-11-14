@@ -1,8 +1,9 @@
 html:lang(ko) {
   word-break: keep-all;
-
 }
-
+html,body {
+  min-width: 400px;
+}
 .app-pad {
   padding: 0 #{$app_padding};
   position: relative;

@@ -8,12 +8,24 @@ $pad: 112px;
     font-weight: bold;
     font-size: 1rem;
     letter-spacing: 5px;
+    padding-left: 2em;
   }
   & > dd {
     text-align: center;
     margin: 1rem 0 3rem;
     font-size: 2rem;
     letter-spacing: 0.25em;
+    &::before {
+      margin-right: 0.5em;
+    }
+  }
+  .tgg-location {
+    color: $main_color_green;
+    font-size: 0.6em;
+    border-bottom: 1px solid $main_color_green;
+    &::before {
+      padding-right: 5px;
+    }
   }
 }
 .vuetiful-history {
@@ -25,7 +37,30 @@ $pad: 112px;
     width: 50%;
   }
 }
-
+.vuetiful-location {
+  max-width: 600px;
+  height: 300px;
+  margin: 10px auto 0;
+}
+.vuetiful-schedule {
+  display: inline-block;
+  width: 80%;
+  max-width: 400px;
+  & > dl {
+    padding: 5px;
+    font-size: 0.5em;
+    text-align: left;
+    letter-spacing:  1px;
+    border-bottom: 1px dotted #3a5169;
+    dt {
+      float: left;
+      font-weight: bold;
+    }
+    dd {
+      margin-left: 8em;
+    }
+  }
+}
 .vuetiful-desc {
   margin-top: 30px;
   $pad: 10px;

@@ -122,3 +122,87 @@
 .icon-thumbs-up:before {
   content: "\70";
 }
+.icon-car:before {
+  content: "\72";
+}
+.icon-bus:before {
+  content: "\73";
+}
+.icon-hand-paper-o:before {
+  content: "\48";
+}
+.icon-hand-peace-o:before {
+  content: "\4d";
+}
+.icon-hand-pointer-o:before {
+  content: "\4e";
+}
+.icon-hand-rock-o:before {
+  content: "\4f";
+}
+.icon-hand-scissors-o:before {
+  content: "\50";
+}
+.icon-hand-spock-o:before {
+  content: "\51";
+}
+.icon-arrow-right-1:before {
+  content: "\76";
+}
+.icon-arrow-left-1:before {
+  content: "\77";
+}
+.icon-arrow-down-1:before {
+  content: "\78";
+}
+.icon-arrow-up-1:before {
+  content: "\79";
+}
+.icon-check:before {
+  content: "\53";
+}
+.icon-check-square:before {
+  content: "\54";
+}
+.icon-paperclip:before {
+  content: "\55";
+}
+.icon-youtube:before {
+  content: "\56";
+}
+.icon-bicycle:before {
+  content: "\58";
+}
+.icon-bullhorn:before {
+  content: "\59";
+}
+.icon-comments:before {
+  content: "\5a";
+}
+.icon-heartbeat:before {
+  content: "\30";
+}
+.icon-thumb-tack:before {
+  content: "\31";
+}
+.icon-map-signs:before {
+  content: "\33";
+}
+.icon-exclamation-circle:before {
+  content: "\34";
+}
+.icon-exclamation-triangle:before {
+  content: "\35";
+}
+.icon-exclamation:before {
+  content: "\36";
+}
+.icon-check-circle:before {
+  content: "\37";
+}
+.icon-location:before {
+  content: "\38";
+}
+.icon-x:before {
+  content: "\71";
+}

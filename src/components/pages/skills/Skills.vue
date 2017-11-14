@@ -5,12 +5,12 @@
         <h2 class="pg-title">{{title}}</h2>
         <strong class="pg-summary">Vue는 지난 한해 동안 <span class="fc-m-green">많은 가능성</span>을 제시했습니다.</strong>
         <p class="pg-desc">
-          한 기업에 소속되지 않은 오픈소스로서 Vue는 Evan You와 코어 멤버분 들을 비롯, 여러 개발자분들의 도움으로 매일같이 발전하여 이제는 react나 angular와 함께 자바스크립트의 프레임워크로 이름을 올리고 있습니다. 하지만 굳이 react나 angular가 있는데 또 다시 Vue를 알아야 하는 이유가 무엇일까 라고 생각할 수 있습니다. 아래의 내용들이 도움이 되실거라 생각합니다.
+          한 기업에 소속되지 않은 오픈소스로서 Vue는 Evan You와 코어 멤버분 들을 비롯, 여러 개발자분들의 도움으로 매일같이 발전하여 이제는 react나 angular와 함께 자바스크립트의 프레임워크로 이름을 올리고 있습니다.
         </p>
       </div>
       <div class="pg-inner-body">
 
-        <section class="pg-inner-group">
+        <section class="pg-inner-group graph-group">
           <h3 class="pg-inner-title">Vue의 성장그래프</h3>
           <div class="graph-item">
             <figure id="vue_download"></figure>
@@ -24,7 +24,7 @@
         <section class="pg-inner-group">
           <article class="pg-inner-group">
             <h4 class="pg-inner-title">
-              1. react, angular, vue 중에 고민한다면?
+              1. react, angular, vue?
             </h4>
             <ul class="reference-list">
               <li><a class="reference-item"
@@ -39,7 +39,7 @@
             </ul>
           </article>
           <article class="pg-inner-group">
-            <h4 class="pg-inner-title">2. 어디서 공부해야할까?</h4>
+            <h4 class="pg-inner-title">2. Tutorial?</h4>
             <ul class="reference-list">
               <li><a class="reference-item" href="https://kr.vuejs.org" target="_blank">역시 API 부터: 잘 정리된 한국 문서</a></li>
               <li><a class="reference-item" href="https://laracasts.com/" target="_blank">영어가 좀 되면 동영상으로</a></li>
@@ -48,16 +48,18 @@
             </ul>
           </article>
           <article class="pg-inner-group">
-            <h4 class="pg-inner-title">3. 공부하다가 모르는게 있으면?</h4>
+            <h4 class="pg-inner-title">3. Questions?</h4>
             <ul class="reference-list">
               <li><a href="https://www.facebook.com/groups/vuejs.korea/"
                      class="reference-item" target="_blank">faceBook</a></li>
               <li><a href="https://vuejs-korea.signup.team/"
                      class="reference-item" target="_blank">slack</a></li>
+              <li><a href="https://vuejs-kr.github.io/"
+                     class="reference-item" target="_blank">블로그</a></li>
             </ul>
           </article>
           <article class="pg-inner-group">
-            <h4 class="pg-inner-title">4. 간단하게 쓸수 있는 UI 컴포넌트는?</h4>
+            <h4 class="pg-inner-title">4. UI components?</h4>
             <ul class="reference-list">
               <li><a class="reference-item" href="https://github.com/vuejs/awesome-vue" target="_blank">Awesome Vue</a></li>
               <li><a class="reference-item" href="https://madewithvuejs.com/" target="_blank">Made with Vue.js</a></li>
@@ -170,6 +172,9 @@
             x: {
               type: 'category'
             }
+          },
+          padding: {
+            'right': 30
           },
           bar: {
             width: {

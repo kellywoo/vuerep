@@ -8,61 +8,63 @@
     data () {
       return {
         apiKey: 'AIzaSyBmCBSOWnhm8vLJoae3XVXLIoUCZSmyasw',
-        altitude: {lat: 37.51330625, lng: 127.04299219}
+        altitude: { lat: 37.51330625, lng: 127.04299219 },
+        mapping: null,
+        flag: false,
+        map: null,
+        marker: null
       }
+    },
+    props: {
+      showMap: {}
     },
     methods: {
       initMap (vm) {
         return function () {
-          function toggleBounce () {
-            if (marker.getAnimation() !== null) {
-              marker.setAnimation(null)
-            } else {
-              marker.setAnimation(google.maps.Animation.BOUNCE)
+          vm.mapping = function () {
+            function toggleBounce () {
+              if ( vm.marker.getAnimation() !== null ) {
+                vm.marker.setAnimation(null)
+              } else {
+                vm.marker.setAnimation(google.maps.Animation.BOUNCE)
+              }
             }
-          }
 
-          var map = new google.maps.Map(document.getElementById('location_map'), {
-            zoom: 16,
-            center: vm.altitude
-          })
-          var marker = new google.maps.Marker({
-            position: vm.altitude,
-            map: map,
-            animation: google.maps.Animation.DROP,
-            title: 'NEWLINK'
-          })
-          marker.addListener('click', toggleBounce)
+            vm.map = new google.maps.Map(vm.$el, {
+              zoom: 16,
+              center: vm.altitude
+            })
+            vm.marker = new google.maps.Marker({
+              position: vm.altitude,
+              map: vm.map,
+              animation: google.maps.Animation.DROP,
+              title: 'NEWLINK'
+            })
+            vm.marker.addListener('click', toggleBounce)
+          }
         }
       },
       loadScript () {
         let src = `https://maps.googleapis.com/maps/api/js?key=${this.apiKey}&callback=initMap`
-        if (document.querySelectorAll(`script[src="${src}"]`).length < 1) {
+        if ( document.querySelectorAll(`script[src="${src}"]`).length < 1 ) {
           let script = document.createElement('script')
           script.src = src
           script.defer = true
-          document.getElementsByTagName('head')[0].appendChild(script)
+          document.getElementsByTagName('head')[ 0 ].appendChild(script)
         }
       }
     },
     created () {
-      window.initMap = this.initMap(this)
+      window.initMap = this.initMap(this);
+      this.loadScript();
     },
-    mounted () {
-      this.loadScript()
-    },
-    destroy () {
-      window.initMap = function () {}
+    watch: {
+      showMap(nv, ov) {
+        if(nv && !this.flag) {
+          this.mapping();
+          this.flag = true
+        }
+      }
     }
   }
 </script>
-<style lang="scss">
-  .location-map {
-    height: 400px;
-  }
-  .gm-bundled-control-on-bottom {
-    right: auto !important;
-    left: 0px !important;
-    bottom: 120px !important
-  }
-</style>

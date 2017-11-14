@@ -3,18 +3,19 @@
   font-size: 0.8rem;
   color: #5a5a5a;
 }
-.graph-item + .graph-item {
-  margin-top: 50px;
-}
+
+
 .bb-legend-item > text {
   font-size: 1rem !important;
 }
+
 .reference-list {
   display: flex;
   align-items: stretch;
   justify-content: center;
   width: 100%;
 }
+
 .reference-list > li {
   flex: 1 1 auto;
   width: 33.33%;
@@ -22,6 +23,7 @@
     height: 100%;
   }
 }
+
 .reference-item {
   display: flex;
   align-items: center;
@@ -31,8 +33,9 @@
   padding: 0.5em 1em;
   margin: 0 10px;
   text-align: center;
-  @include ghostBtn(transparent,#6cbf95);
+  @include ghostBtn(transparent, #6cbf95);
 }
+
 @include mq-desktop {
   .pg-skills {
     .pg-inner-group {
@@ -40,9 +43,23 @@
       max-width: 800px;
     }
   }
+  .graph-group {
+    overflow: hidden;
+  }
+  .graph-item {
+    width: 50%;
+    float: left;
+  }
 }
 
 @include mq-tab {
+
+  .graph-item {
+    width: 100%;
+    & + .graph-item {
+      margin-top: 50px;
+    }
+  }
   .reference-list {
     display: block;
   }

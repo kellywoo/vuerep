@@ -7,7 +7,7 @@
           <span class="fc-m-green">그래서 Vue 커뮤니티</span>는<br/>많은 도움이 되려 합니다.
         </strong>
         <p class="pg-desc">
-          Vue가 짧은 시간동안에 이렇게 빠른 괘도로 성장할 수 있었던 것은 커뮤니티의 힘이 가장 큽니다.<br/>어떤 언어든 커뮤니티가 잘 발달해 있어야 많은 정보와 지식을 교환할 수 있고 이 힘이 언어의 발전을 도모합니다.<br />
+          Vue가 짧은 시간동안에 이렇게 빠른 괘도로 성장할 수 있었던 것은 커뮤니티의 힘이 가장 큽니다.<br/>어떤 언어든 커뮤니티가 잘 발달해 있어야 많은 정보와 지식을 교환할 수 있고 이 힘이 언어의 발전을 도모합니다.<br/>
           무엇보다 잘 정리된 API 문서를 제공, 새로운 교재가 아닌 공식 API로 공부를 가능케 하여 빠른 변화에도 대처할 수 있도록 돕습니다.
         </p>
       </div>
@@ -68,23 +68,21 @@
               </div>
             </li>
           </ul>
-          <transition name="title">
-            <div class="community-slogan txt-c" v-show="showSlogan">
-              <span>우</span>
-              <span>리</span>
-              <span>는</span>
-              <span>지</span>
-              <span>금</span>
-              <span>도</span>
-              <br class="m-br">
-              <span>폭</span>
-              <span>풍</span>
-              <span>성</span>
-              <span>장</span>
-              <span>중</span>
-              <span>!!</span>
-            </div>
-          </transition>
+          <div class="community-slogan txt-c" v-show="showSlogan">
+            <span>우</span>
+            <span>리</span>
+            <span>는</span>
+            <span>지</span>
+            <span>금</span>
+            <span>도</span>
+            <br class="m-br">
+            <span>폭</span>
+            <span>풍</span>
+            <span>성</span>
+            <span>장</span>
+            <span>중</span>
+            <span>!!</span>
+          </div>
         </div>
         <div class="pg-inner-group">
           <h3 class="pg-inner-title">커뮤니티 활동</h3>
@@ -174,6 +172,7 @@
   .title-enter-active, .title-leave-active {
     transition: all 1s;
   }
+
   .title-enter, .title-leave-to {
     opacity: 0;
     transform: translateY(30px);
