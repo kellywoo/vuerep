@@ -22,6 +22,22 @@
           </div>
         </section>
         <section class="pg-inner-group">
+          <h3 class="block-text txt-c" style="margin-bottom: 50px;" >
+            <span style="margin-bottm: 10px">V</span>
+            <span style="margin-bottm: 10px">U</span>
+            <span style="margin-bottm: 10px">E</span>
+            <br />
+            <span>R</span>
+            <span>E</span>
+            <span>F</span>
+            <span>E</span>
+            <span>R</span>
+            <span>E</span>
+            <span>N</span>
+            <span>C</span>
+            <span>E</span>
+            <span>S</span>
+          </h3>
           <article class="pg-inner-group">
             <h4 class="pg-inner-title">
               1. react, angular, vue?

@@ -8,7 +8,7 @@
     data () {
       return {
         apiKey: 'AIzaSyBmCBSOWnhm8vLJoae3XVXLIoUCZSmyasw',
-        altitude: { lat: 37.51330625, lng: 127.04299219 },
+        altitude: { lat: 37.50788960265423, lng: 127.04548419265973 },
         mapping: null,
         flag: false,
         map: null,

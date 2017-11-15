@@ -38,7 +38,7 @@
             <span class="form-label">Message<em class="sty-required" title="required" aria-label="required">*</em></span>
             <textarea class="textarea" maxlength="500"
                       v-validate="messageValidate"
-                      placeholder="Thank you for your words."
+                      placeholder="작은 관심도 저희에겐 큰 도움이 됩니다."
                       @keyup="checkValidate"
                       name="message" v-model="message"></textarea>
             <span class="form-icon img-thumbsup"></span>
@@ -102,7 +102,7 @@
         this.name = ''
         this.email = ''
         this.phone = ''
-        this.messae = ''
+        this.message = ''
       },
       checkValidate () {
         let vm = this

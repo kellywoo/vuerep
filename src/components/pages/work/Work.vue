@@ -68,7 +68,7 @@
               </div>
             </li>
           </ul>
-          <div class="community-slogan txt-c" v-show="showSlogan">
+          <div class="block-text txt-c" v-show="showSlogan">
             <span>우</span>
             <span>리</span>
             <span>는</span>

@@ -24,7 +24,7 @@
                     </p>
                   </div>
                   <a class="vue-fact-link" target="_blank"
-                     href="http://blog.evanyou.me/2014/02/11/first-week-of-launching-an-oss-project/">More of Launch</a>
+                     href="http://blog.evanyou.me/2014/02/11/first-week-of-launching-an-oss-project/">More about Launch</a>
                 </div>
               </dd>
             </dl>
@@ -39,10 +39,9 @@
                     <p>Google의 Creative Lab에서 Technologist로 일하며 angular 커밋터로 활동했으며 현재는 풀타임 vue 커밋터로 일하고 있다.
                     </p>
                   </div>
-                  <a class="vue-fact-link" target="_blank" href="https://www.linkedin.com/in/evanyou">More of him</a>
+                  <a class="vue-fact-link" target="_blank" href="https://www.linkedin.com/in/evanyou">More about Creator</a>
                 </div>
               </dd>
-              <!--<dd class="tooltip"><span class="tooltip-desc">에반유</span></dd>-->
             </dl>
           </li>
           <li>
@@ -53,11 +52,11 @@
                   <strong>Official VueConf</strong>
                   <div v-align:aboutVue>
                     <p>
-                      첫 공식 행사는 2017.06.22-23 폴란드 Wroclaw에서 열렸으며 일본,중국,한국,EU등 비공식적으로 행해지고 있다.
+                      첫 공식 행사는 2017.06.22-23 폴란드 Wroclaw에서 열렸으며 일본,중국,한국 등 아시이에서 많은 밋업 형식으로 행해지고 있다.
                       </p>
                   </div>
                   <a class="vue-fact-link" href="https://www.youtube.com/watch?v=TsgdiXGWlIY&feature=youtu.be"
-                     target="_blank">More of Conf</a>
+                     target="_blank">More about Conf</a>
                 </div>
               </dd>
             </dl>

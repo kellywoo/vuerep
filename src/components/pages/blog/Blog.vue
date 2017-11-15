@@ -23,7 +23,7 @@
           <div class="pg-inner-group">
             <dl class="vuetiful-third">
               <dt>날짜는?</dt>
-              <dd>2012.12.01<span>(Fri)</span></dd>
+              <dd>2017.12.01<span>(금)</span></dd>
               <dt>장소는?</dt>
               <dd>Dcamp 다목적 홀<br /><button type="button" class="tgg-location icon-location" @click="showLocation = !showLocation">지도보기</button>
                 <location class="vuetiful-location"

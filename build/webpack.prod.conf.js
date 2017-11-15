@@ -64,7 +64,10 @@ const webpackConfig = merge(baseWebpackConfig, {
       minify: {
         removeComments: true,
         collapseWhitespace: true,
-        removeAttributeQuotes: true
+        removeAttributeQuotes: true,
+        html5: true,
+        minifyCSS: true,
+        minifyJS: true
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
@@ -98,6 +101,11 @@ const webpackConfig = merge(baseWebpackConfig, {
       {
         from: path.resolve(__dirname, '../assets/img'),
         to: '../dist/assets/img',
+        ignore: ['.*']
+      },
+      {
+        from: path.resolve(__dirname, '../assets/fonts'),
+        to: '../dist/assets/fonts',
         ignore: ['.*']
       }
     ])

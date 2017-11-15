@@ -113,6 +113,7 @@ $gnb_width: 200px;
     @include square($btn_size);
     display: block;
     font-size: 30px;
+    z-index: 2;
       .bar {
       $bar_height: 4px;
       display: block;
