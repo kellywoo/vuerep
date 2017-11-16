@@ -32,7 +32,6 @@
       setTimeout(() => {
         this.photostack = new PhotoStack(this.$el, {
           callback: function (item) {
-            console.log(item);
           }
         })
       },500)

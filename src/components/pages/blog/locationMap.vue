@@ -20,8 +20,6 @@
     },
     methods: {
       initMap (vm) {
-        return function () {
-          vm.mapping = function () {
             function toggleBounce () {
               if ( vm.marker.getAnimation() !== null ) {
                 vm.marker.setAnimation(null)
@@ -29,7 +27,6 @@
                 vm.marker.setAnimation(google.maps.Animation.BOUNCE)
               }
             }
-
             vm.map = new google.maps.Map(vm.$el, {
               zoom: 16,
               center: vm.altitude
@@ -41,11 +38,9 @@
               title: 'NEWLINK'
             })
             vm.marker.addListener('click', toggleBounce)
-          }
-        }
       },
       loadScript () {
-        let src = `https://maps.googleapis.com/maps/api/js?key=${this.apiKey}&callback=initMap`
+        let src = `https://maps.googleapis.com/maps/api/js?key=${this.apiKey}`
         if ( document.querySelectorAll(`script[src="${src}"]`).length < 1 ) {
           let script = document.createElement('script')
           script.src = src
@@ -55,13 +50,13 @@
       }
     },
     created () {
-      window.initMap = this.initMap(this);
+//      window.initMap = this.initMap(this);
       this.loadScript();
     },
     watch: {
       showMap(nv, ov) {
         if(nv && !this.flag) {
-          this.mapping();
+          this.initMap(this);
           this.flag = true
         }
       }
