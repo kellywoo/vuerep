@@ -54,8 +54,8 @@
       this.loadScript();
     },
     watch: {
-      showMap(nv, ov) {
-        if(nv && !this.flag) {
+      showMap (nv, ov) {
+        if (nv && !this.flag) {
           this.initMap(this);
           this.flag = true
         }

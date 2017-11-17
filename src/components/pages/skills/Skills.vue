@@ -55,11 +55,11 @@
             </ul>
           </article>
           <article class="pg-inner-group">
-            <h4 class="pg-inner-title">2. Tutorial?</h4>
+            <h4 class="pg-inner-title">2. Get to know Vue</h4>
             <ul class="reference-list">
               <li><a class="reference-item" href="https://kr.vuejs.org" target="_blank">역시 API 부터: 잘 정리된 한국 문서</a></li>
               <li><a class="reference-item" href="https://laracasts.com/" target="_blank">영어가 좀 되면 동영상으로</a></li>
-              <li><a class="reference-item" href="https://joshua1988.github.io/web_dev/vuejs-tutorial-for-beginner/" target="_blank">미리 공부한 분들의 실전기 및 분석</a>
+              <li><a class="reference-item" href="https://about.gitlab.com/2017/11/09/gitlab-vue-one-year-later/" target="_blank">GitLab Vue-one-year-later</a>
               </li>
             </ul>
           </article>
