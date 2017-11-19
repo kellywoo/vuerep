@@ -143,6 +143,7 @@
             x: {
               type: 'timeseries',
               tick: {
+                count: 4,
                 format: '%Y-%m-%d'
               }
             }
@@ -186,7 +187,14 @@
           axis: {
             rotated: true,
             x: {
-              type: 'category'
+              type: 'category',
+            },
+            y: {
+              tick: {
+                format: function(v){
+                  return parseInt(v/1000) + 'k'
+                }
+              }
             }
           },
           padding: {

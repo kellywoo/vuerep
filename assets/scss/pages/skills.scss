@@ -53,7 +53,9 @@
 }
 
 @include mq-tab {
-
+.pg-skills .pg-inner-group .pg-inner-group {
+ margin-bottom: 4rem;
+}
   .graph-item {
     width: 100%;
     & + .graph-item {

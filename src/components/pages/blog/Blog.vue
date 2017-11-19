@@ -47,6 +47,8 @@
                   <dl><dt>9:50-10:00</dt><dd>정리</dd></dl>
                 </div>
               </dd>
+              <dt>개인참여신청?</dt>
+              <dd><a href="https://vuejs-kr.github.io/meetup/#/third" target="_blank" class="btn-green">3회 신청하러 가기</a></dd>
               <dt>1,2회가 궁금해?</dt>
               <dd>
                 <history></history>

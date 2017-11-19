@@ -20,24 +20,32 @@
     },
     methods: {
       initMap (vm) {
-            function toggleBounce () {
-              if ( vm.marker.getAnimation() !== null ) {
-                vm.marker.setAnimation(null)
-              } else {
-                vm.marker.setAnimation(google.maps.Animation.BOUNCE)
-              }
-            }
-            vm.map = new google.maps.Map(vm.$el, {
-              zoom: 16,
-              center: vm.altitude
-            })
-            vm.marker = new google.maps.Marker({
-              position: vm.altitude,
-              map: vm.map,
-              animation: google.maps.Animation.DROP,
-              title: 'NEWLINK'
-            })
-            vm.marker.addListener('click', toggleBounce)
+        function toggleBounce () {
+          if ( vm.marker.getAnimation() !== null ) {
+            vm.marker.setAnimation(null)
+          } else {
+            vm.marker.setAnimation(google.maps.Animation.BOUNCE)
+          }
+        }
+
+        vm.map = new google.maps.Map(vm.$el, {
+          zoom: 16,
+          center: vm.altitude
+        })
+
+        vm.marker = new google.maps.Marker({
+          position: vm.altitude,
+          map: vm.map,
+          animation: google.maps.Animation.DROP,
+          title: 'NEWLINK'
+        })
+        vm.marker.addListener('click', toggleBounce)
+        new google.maps.InfoWindow({
+          content: `<div id="site_notice" class="location-notice">
+                  서울특별시 강남구 선릉로 551<br />D.CAMP(디캠프) 6층 다목적홀
+                </div>
+            `
+        }).open(vm.map, vm.marker);
       },
       loadScript () {
         let src = `https://maps.googleapis.com/maps/api/js?key=${this.apiKey}`
@@ -55,7 +63,7 @@
     },
     watch: {
       showMap (nv, ov) {
-        if (nv && !this.flag) {
+        if ( nv && !this.flag ) {
           this.initMap(this);
           this.flag = true
         }

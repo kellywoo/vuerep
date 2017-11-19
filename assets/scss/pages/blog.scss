@@ -127,6 +127,11 @@ $pad: 112px;
   }
 }
 
+.location-notice {
+  letter-spacing: 0;
+  padding: 0.5rem 0.5rem;
+  font-weight: bold;
+}
 
 @include mq-desktop {
 
