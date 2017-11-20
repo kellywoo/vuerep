@@ -132,6 +132,21 @@ $pad: 112px;
   padding: 0.5rem 0.5rem;
   font-weight: bold;
 }
+.sponsor-list {
+  text-align: center;
+}
+.sponsor-item {
+  border-radius: 5px;
+  display: inline-block;
+  & > a {
+    display: block;
+    width: 200px; height: 50px;
+  }
+  &:nth-child(1) {
+    background: #000 url('/vue/assets/img/coinone_logo_white_main.svg') center center no-repeat;
+    background-size: 80% auto;
+  }
+}
 
 @include mq-desktop {
 

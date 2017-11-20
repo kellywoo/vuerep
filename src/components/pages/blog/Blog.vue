@@ -25,7 +25,7 @@
               <dt>날짜는?</dt>
               <dd>2017.12.01<span>(금)</span></dd>
               <dt>장소는?</dt>
-              <dd>Dcamp 다목적 홀<br /><button type="button" class="tgg-location icon-location" @click="showLocation = !showLocation">지도보기</button>
+              <dd>선릉 Dcamp(변경가능)<br /><button type="button" class="tgg-location icon-location" @click="showLocation = !showLocation">지도보기</button>
                 <location class="vuetiful-location"
                           v-show="showLocation" :showMap="showLocation"></location></dd>
               <dt>참여자는?</dt>
@@ -46,9 +46,16 @@
                   <dl><dt>9:20-9:50</dt><dd>네트워킹</dd></dl>
                   <dl><dt>9:50-10:00</dt><dd>정리</dd></dl>
                 </div>
+                <p style="font-size:0.8rem;margin-top:20px;letter-spacing:1px">위 스케쥴은 추후 변경 가능합니다.</p>
+              </dd>
+              <dt>후원</dt>
+              <dd>
+                <ul class="sponsor-list">
+                  <li class="sponsor-item"><a title="coin one" href="https://coinone.co.kr/" target="_blank"><span class="off-grid">coin one</span></a></li>
+                </ul>
               </dd>
               <dt>개인참여신청?</dt>
-              <dd><a href="https://vuejs-kr.github.io/meetup/#/third" target="_blank" class="btn-green">3회 신청하러 가기</a></dd>
+              <dd><a href="https://www.tumblbug.com/bb93f593-459b-40fe-9695-81ad4cb2e814" target="_blank" class="btn-green">3회 신청하러 가기</a></dd>
               <dt>1,2회가 궁금해?</dt>
               <dd>
                 <history></history>
