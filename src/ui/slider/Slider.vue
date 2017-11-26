@@ -26,6 +26,7 @@
       this.len = this.$slots.default.length;
     },
     mounted () {
+      console.log('slide mounted')
       this.$children.forEach((v, i) => {
         this.items.push(v.$el);
       });

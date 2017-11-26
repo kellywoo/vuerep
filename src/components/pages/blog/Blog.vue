@@ -25,7 +25,7 @@
               <dt>날짜는?</dt>
               <dd>2017.12.01<span>(금)</span></dd>
               <dt>장소는?</dt>
-              <dd>선릉 Dcamp(변경가능)<br /><button type="button" class="tgg-location icon-location" @click="showLocation = !showLocation">지도보기</button>
+              <dd>역삼 마루180(변경가능)<br /><button type="button" class="tgg-location icon-location" @click="showLocation = !showLocation">지도보기</button>
                 <location class="vuetiful-location"
                           v-show="showLocation" :showMap="showLocation"></location></dd>
               <dt>참여자는?</dt>

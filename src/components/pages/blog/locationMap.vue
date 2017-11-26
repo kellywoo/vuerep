@@ -8,7 +8,7 @@
     data () {
       return {
         apiKey: 'AIzaSyBmCBSOWnhm8vLJoae3XVXLIoUCZSmyasw',
-        altitude: { lat: 37.50788960265423, lng: 127.04548419265973 },
+        altitude: { lat: 37.495482, lng: 127.038741 },
         mapping: null,
         flag: false,
         map: null,
@@ -42,7 +42,7 @@
         vm.marker.addListener('click', toggleBounce)
         new google.maps.InfoWindow({
           content: `<div id="site_notice" class="location-notice">
-                  서울특별시 강남구 선릉로 551<br />D.CAMP(디캠프) 6층 다목적홀
+                  서울특별시 강남구 역삼1동 790-6<br />마루 180
                 </div>
             `
         }).open(vm.map, vm.marker);
